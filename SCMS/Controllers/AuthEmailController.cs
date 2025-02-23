@@ -15,7 +15,7 @@ namespace SCMS.Controllers
             if (!string.IsNullOrEmpty(email))
             {
                 // Here, you can add logic to check the email in the database
-                return RedirectToAction("Dashboard", "Home"); // Redirect to Dashboard
+                return RedirectToAction("Index", "AuthPassword"); // Redirect to Dashboard
             }
 
             ViewBag.Error = "Please enter a valid email.";
