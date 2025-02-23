@@ -29,10 +29,10 @@
     border: 1px solid #ccc;
 }
 
-    .btn-group .btn.active {
-        background-color: #007bff;
-        color: white;
-    }
+.btn-group .btn.active {
+    background-color: #007bff;
+    color: white;
+}
 
 .form-control {
     border-radius: 10px;
@@ -54,6 +54,151 @@
 .footer-text {
     font-size: 12px;
     color: gray;
+}
+
+.notification-box {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 8px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.notification-box.yellow-notification {
+    color: #666;
+}
+
+.notification-box.yellow-notification .highlight {
+    color: #f4b400; /* Gold color for "esmartcampus" */
+    font-weight: bold;
+}
+
+
+.register-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.form-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.logo {
+    width: 80px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.btn-group button {
+    width: 50%;
+}
+
+.image-container img {
+    height: 100vh;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 0 10px 10px 0;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: #666;
+}
+
+
+
+.profile-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.logo {
+    width: 80px;
+}
+
+.user-icon i {
+    font-size: 50px;
+    color: #6c757d;
+}
+
+.input-group-text {
+    background-color: #e9ecef;
+    border-right: 0;
+}
+
+.input-group input {
+    border-left: 0;
+}
+
+.form-check-input {
+    margin-top: 0;
+}
+
+.image-container img {
+    height: 100vh;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 0 10px 10px 0;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: #666;
+}
+
+.signInSignUpSection {
+    padding: 4px;
+    background-color: #f0f0f2 !important;
+}
+
+.signInSignUpSection.btn-group .btn {
+    background-color: #f0f0f2;
+    border: 0px;
+    color: #45425D;
+}
+
+.signInSignUpSection.btn-group button.btn.btn-light.active {
+    background-color: #fff;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.LoginPageImailSection {
+    display: flex;
+}
+
+.LoginPageImailSection span.input-group-text {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    background-color: #fff;
+    border-right: 0px !important;
+}
+
+.LoginPageImailSection input.form-control {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-left: 0px;
+}
+
+.LoginPageImailSection span.input-group-text:after {
+    display: block;
+    height: 5px;
+    width: 2px;
+    background-color: #ccc;
 }
 
 /* Mobile Responsive */
