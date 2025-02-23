@@ -26,6 +26,19 @@
             <h2>Welcome To Smart Learning Campus</h2>
             <p class="text-muted">Welcome, Please Enter Your Details</p>
 
+             <!-- Sign In / Sign Up Toggle -->
+            <div class="btn-group w-100 mb-3 signInSignUpSection" role="group">
+                <button type="button" class="btn btn-light SignIn">Sign In</button>
+                <button onclick="window.location.href='/AuthEmail/Index'" class="btn btn-light active SignUp">
+                    Sign Up
+                </button>
+            </div>
+
+            <div class="notification-box yellow-notification">
+                To process Sign Up option you should enter the email which you gave to 
+                <span class="highlight">esmartcampus</span>.
+            </div>
+
             <!-- Login Form -->
             <form method="post" asp-action="Authenticate">
                 <div class="mb-3">

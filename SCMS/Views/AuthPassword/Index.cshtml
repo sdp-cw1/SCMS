@@ -1,13 +1,7 @@
-﻿
-
-@{
+﻿@{
     Layout = null; /* No default header/footer */
+    ViewData["Title"] = "Login";
 }
-
-@{
-    ViewData["Title"] = "LoginAfterEmailValidate";
-}
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,36 +20,37 @@
                 <div class="login-box text-center">
                     <img src="~/images/logo.png" alt="Logo" class="logo"> <!-- Your Logo -->
                     <h3 class="mt-3">Smart Learning Campus</h3>
-                    <h4 class="mt-2">Welcome Back</h4>
-                    <p>Welcome Back, Please Enter Your Details</p>
+                    <h4 class="mt-2">Welcome To Smart Learning Campus</h4>
+                    <p>Welcome, Please Enter Your Details</p>
                     
                     <!-- Sign In / Sign Up Toggle -->
                     <div class="btn-group w-100 mb-3 signInSignUpSection" role="group">
-                        <button type="button" class="btn btn-light active SignIn">Sign In</button>
-                        <button type="button" class="btn btn-light SignUp">Sign Up</button>
+                        <button type="button" class="btn btn-light SignIn">Sign In</button>
+                        <button type="button" class="btn btn-light active SignUp">Sign Up</button>
                     </div>
 
                     <!-- Login Form -->
                     <form method="post" asp-action="Authenticate">
-                            <div class="form-group mb-3">
-                                <label class="text-start w-100">Email Address</label>
-                                <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email">
-                                <span class="text-danger" id="emailError"></span> <!-- Error Message -->
-                            </div>
-    
-                            <div class="form-group mb-3">
-                                <label class="text-start w-100">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password">
-                            </div>
-    
-                            <button type="submit" class="btn btn-primary w-100">Sign In</button>
-                    </form>
+                        <div class="form-group mb-3">
+                            <label class="text-start w-100">Email Address</label>
+                            <input type="email" class="form-control" name="email" required placeholder="Enter your email">
+                            <span class="text-danger">@ViewBag.Error</span> <!-- Error Message -->
+                        </div> 
 
-                    <!-- Or Continue With -->
-                    <div class="mt-3">Or Continue With</div>
-                    <div class="social-icons mt-2">
-                        <img src="~/images/LoginFromGoogle.png" alt="Google">
-                    </div>
+                        <div class="notification-box yellow-notification">
+                            <span class="highlight">To process Sign Up option you should enter the 
+                                password which esmartcampus sent to you. Password
+                                has been sent to  nilanchathura8@gmail.com
+                            </span>.
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="text-start w-100">Password</label>
+                            <input type="password" class="form-control" name="password" required placeholder="Enter your password">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Continue</button>
+                    </form>
 
                     <!-- Footer Text -->
                     <p class="mt-4 footer-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
@@ -70,20 +65,3 @@
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

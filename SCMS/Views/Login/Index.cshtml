@@ -11,7 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Smart Learning Campus</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/Custom.css"> <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="~/css/custom.css"> <!-- Custom CSS -->
 </head>
 <body>
     <div class="container-fluid login-container">
@@ -25,17 +26,17 @@
                     <p>Welcome Back, Please Enter Your Details</p>
                     
                     <!-- Sign In / Sign Up Toggle -->
-                    <div class="btn-group w-100 mb-3" role="group">
-                        <button type="button" class="btn btn-light active">Sign In</button>
-                        <button onclick="window.location.href='/AuthEmail/Index'" class="btn btn-primary">
+                    <div class="btn-group w-100 mb-3 signInSignUpSection" role="group">
+                        <button type="button" class="btn btn-light active SignIn">Sign In</button>
+                        <button onclick="window.location.href='/AuthEmail/Index'" class="btn btn-light SignUp">
                             Sign Up
                         </button>
                     </div>
 
                     <!-- Login Form -->
                     <form method="post" action="/Login/Authenticate">
-                        <div class="form-group mb-3">
-                            <label class="text-start w-100">Email Address</label>
+                        <div class="form-group mb-3 LoginPageImailSection">
+                            <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
                             <input type="email" class="form-control" name="email" required placeholder="Enter your email">
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Continue</button>
