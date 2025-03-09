@@ -7,34 +7,87 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SCMS.styles.css" asp-append-version="true" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SCMS</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+<body class="PageBodyContent">
+
+    <div class="HeaderNavBar container d-flex p-3 bg-light">
+            <div class="col-md-2 navigation-bar">
+                <header>
+                <!-- Sidebar -->
+                    <nav id="sidebar" class="d-md-block bg-light sidebar">
+                        <div class="sidebar-sticky">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="Home">
+                                        <i class="bi bi-house-door"></i> Dashboard
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Calendar">
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i class="bi bi-chat-dots"></i> Chat Room
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+            <div class="col-md-10 mainContentBody">
+                <div class = "headerContent">
+                    <div class="searchBoxHeader">
+                        <input type="search" class="form-control" id="search" name="search" placeholder="Search anything here">
+                        <button type="button" id="searchButton" class="btn btn-light searchButton">
+                            <img src="~/images/Search.png" alt="Background" class="img-fluid">
+                        </button>
+                    </div>
+
+                    <div class="detailsHeader">
+                        <div class="notificationHeader">
+                            <button type="button" id="notificationButton" class="btn btn-light notifficationButton">
+                                <img src="~/images/notifications.png" alt="Background" class="img-fluid">
+                            </button>
+                        </div>
+                        <div class="messageHeader">
+                            <button type="button" id="messageButton" class="btn btn-light messageButton">
+                                <img src="~/images/Message circle.png" alt="Background" class="img-fluid">
+                            </button>
+                        </div>
+                        <div class="userHeader">
+                            <button type="button" id="userButton" class="btn btn-light userButton">
+                                <img src="~/images/Profile_nav.png" alt="Background" class="img-fluid">
+                                <span class="userNameHeader">
+                                    Nilan C Bandara
+                                </span>
+                                <span class="userRoleHeader">
+                                    Student
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+
+
     </div>
+    
+    
 
     <footer class="border-top footer text-muted">
         <div class="container">
