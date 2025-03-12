@@ -62,3 +62,56 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+
+CREATE TABLE IF NOT EXISTS `acc_staff` (
+    `id` VARCHAR(6) PRIMARY KEY,
+    `user_id` INTEGER NOT NULL UNIQUE,
+    `dob` DATE NOT NULL ,    
+    `first_name` VARCHAR(50) NOT NULL, 
+    `last_name` VARCHAR(50) NOT NULL ,
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+-- Store Procedure for Inserting a new User and Account Staff
+
+DELIMITER $$
+
+CREATE PROCEDURE InsertUserAndAcc(
+    IN p_username VARCHAR(20),
+    IN p_nic VARCHAR(12),
+    IN p_email VARCHAR(50),
+    IN p_phone VARCHAR(12),
+    IN p_password VARCHAR(255),
+    IN p_dob DATE,
+    IN p_firstname VARCHAR(50),
+    IN p_lastname VARCHAR(50)
+)
+BEGIN
+    DECLARE new_user_id INT;
+    DECLARE next_id INT;
+    DECLARE new_staff_id VARCHAR(6);
+
+    -- Insert into users table
+    INSERT INTO users (username, nic, email, phone, password)
+    VALUES (p_username, p_nic, p_email, p_phone, p_password);
+
+    -- Get the last inserted user ID
+    SET new_user_id = LAST_INSERT_ID();
+
+    -- Generate new acc_staff ID
+    SELECT COALESCE(MAX(CAST(SUBSTRING(id, 3) AS UNSIGNED)), 0) + 1 
+    INTO next_id 
+    FROM acc_staff;
+
+    SET new_staff_id = CONCAT('AS', LPAD(next_id, 4, '0'));
+
+    -- Insert into acc_staff table with proper ID and details
+    INSERT INTO acc_staff (id, user_id, dob, first_name, last_name)
+    VALUES (new_staff_id, new_user_id, p_dob, p_firstname, p_lastname);
+END$$
+
+DELIMITER ;
+
+
