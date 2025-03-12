@@ -115,3 +115,52 @@ END$$
 DELIMITER ;
 
 
+CREATE TABLE IF NOT EXISTS `student` (
+    `id` VARCHAR(6) PRIMARY KEY,
+    `user_id` INTEGER NOT NULL UNIQUE,
+    `dob` DATE NOT NULL ,    
+    `first_name` VARCHAR(50) NOT NULL, 
+    `last_name` VARCHAR(50) NOT NULL ,
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Store Procedure for Inserting a new User and Student
+
+
+DELIMITER $$
+
+CREATE PROCEDURE InsertUserAndStu(
+    IN p_username VARCHAR(20),
+    IN p_nic VARCHAR(12),
+    IN p_email VARCHAR(50),
+    IN p_phone VARCHAR(12),
+    IN p_password VARCHAR(255),
+    IN p_dob DATE,
+    IN p_firstname VARCHAR(50),
+    IN p_lastname VARCHAR(50)
+)
+BEGIN
+    DECLARE new_user_id INT;
+    DECLARE next_id INT;
+    DECLARE new_student_id VARCHAR(6);
+
+    -- Insert into users table
+    INSERT INTO users (username, nic, email, phone, password)
+    VALUES (p_username, p_nic, p_email, p_phone, p_password);
+
+    -- Get the last inserted user ID
+    SET new_user_id = LAST_INSERT_ID();
+
+    -- Generate new student ID
+    SELECT COALESCE(MAX(CAST(SUBSTRING(id, 3) AS UNSIGNED)), 0) + 1 
+    INTO next_id 
+    FROM student;
+
+    SET new_student_id = CONCAT('ST', LPAD(next_id, 4, '0'));
+
+    -- Insert into student table with proper ID and details
+    INSERT INTO student (id, user_id, dob, first_name, last_name)
+    VALUES (new_student_id, new_user_id, p_dob, p_firstname, p_lastname);
+END$$
+
+DELIMITER ;
