@@ -164,3 +164,57 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+
+-- Creating last all tables
+
+CREATE TABLE IF NOT EXISTS modules (
+    id VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    lecture VARCHAR(10),
+    CONSTRAINT fk_modules_lecture FOREIGN KEY (lecture) REFERENCES users(id) ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS courses (
+    id VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS course_modules (
+    course_id VARCHAR(10),
+    module_id VARCHAR(10),
+    PRIMARY KEY (course_id, module_id),
+    CONSTRAINT fk_course_modules_course FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE,
+    CONSTRAINT fk_course_modules_module FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS classes (
+    id VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    seats INTEGER NOT NULL CHECK (seats > 0)
+);
+
+CREATE TABLE IF NOT EXISTS events (
+    id VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    organiser VARCHAR(10),
+    CONSTRAINT fk_events_organiser FOREIGN KEY (organiser) REFERENCES users(id) ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS schedules (
+    id VARCHAR(10) PRIMARY KEY,
+    event_id VARCHAR(10) NOT NULL,
+    datetime DATETIME NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    CONSTRAINT fk_schedules_event FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS participants (
+    schedule_id VARCHAR(10),
+    user_id VARCHAR(10),
+    PRIMARY KEY (schedule_id, user_id),
+    CONSTRAINT fk_participants_schedule FOREIGN KEY (schedule_id) REFERENCES schedules(id) ON DELETE CASCADE,
+    CONSTRAINT fk_participants_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
