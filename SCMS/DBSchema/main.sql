@@ -171,7 +171,7 @@ DELIMITER ;
 CREATE TABLE IF NOT EXISTS modules (
     id VARCHAR(10) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    lecture VARCHAR(10),
+    lecture integer,
     FOREIGN KEY (`lecture`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
     -- CONSTRAINT fk_modules_lecture FOREIGN KEY (lecture) REFERENCES users(id) ON DELETE SET NULL
 );
@@ -201,7 +201,7 @@ CREATE TABLE IF NOT EXISTS events (
     id VARCHAR(10) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     category VARCHAR(50) NOT NULL,
-    organiser VARCHAR(10),
+    organiser integer(10),
     FOREIGN KEY (`organiser`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
     -- CONSTRAINT fk_events_organiser FOREIGN KEY (organiser) REFERENCES users(id) ON DELETE SET NULL
 );
@@ -217,11 +217,10 @@ CREATE TABLE IF NOT EXISTS schedules (
 
 CREATE TABLE IF NOT EXISTS participants (
     schedule_id VARCHAR(10),
-    user_id VARCHAR(10),
+    user_id integer,
     PRIMARY KEY (schedule_id, user_id),
     FOREIGN KEY (`schedule_id`) REFERENCES `schedules`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
     -- CONSTRAINT fk_participants_schedule FOREIGN KEY (schedule_id) REFERENCES schedules(id) ON DELETE CASCADE,
     -- CONSTRAINT fk_participants_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
-
