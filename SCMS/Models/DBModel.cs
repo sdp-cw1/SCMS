@@ -19,14 +19,20 @@ namespace SCMS.Models
             using var connection = new MySqlConnection(_connectionString);
             connection.Open();
 
-            string query = "SELECT COUNT(*) FROM users WHERE email = @Email AND password = @Password";
+            string query = "SELECT password FROM users WHERE email = @Email AND password = @Password";
 
             using var cmd = new MySqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@Email", email);
             cmd.Parameters.AddWithValue("@Password", password); // Consider hashing passwords for security
 
-            int userCount = Convert.ToInt32(cmd.ExecuteScalar());
-            return userCount > 0;
+            string hashedPassword = Convert.ToString(cmd.ExecuteScalar());
+
+            if (hashedPassword.Length == 0)
+            {
+                return false;
+            }
+
+            return BCrypt.Net.BCrypt.Verify(text: password, hash: hashedPassword);
         }
     }
 }
