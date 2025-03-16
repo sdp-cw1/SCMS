@@ -9,6 +9,13 @@
 }
 
 
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
