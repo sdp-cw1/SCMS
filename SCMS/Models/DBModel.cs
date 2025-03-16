@@ -4,7 +4,7 @@ namespace SCMS.Models
 {
     public class DBModel
     {
-        private readonly string _connectionString = "Server=127.0.0.1;User ID=root;Password=password;Database=scms";
+        private readonly string _connectionString = "Server=127.0.0.1;User ID=root;Password=Gmysql#4321;Database=scms";
 
         // Constructor to inject IConfiguration
         /* public DBModel(IConfiguration configuration)
@@ -23,9 +23,10 @@ namespace SCMS.Models
             cmd.Parameters.AddWithValue("@Email", email);
             cmd.Parameters.AddWithValue("@Password", password); // Consider hashing passwords for security
 
-            string hashedPassword = Convert.ToString(cmd.ExecuteScalar());
+        string hashedPassword = Convert.ToString(cmd.ExecuteScalar());
+            return password == hashedPassword;
 
-            return BCrypt.Net.BCrypt.Verify(text: password, hash: hashedPassword);
+       //     return BCrypt.Net.BCrypt.Verify(text: password, hash: hashedPassword);
 
             // int userCount = Convert.ToInt32(cmd.ExecuteScalar());
             // return userCount > 0;
