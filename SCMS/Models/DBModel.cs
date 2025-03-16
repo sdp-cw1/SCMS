@@ -30,6 +30,20 @@ namespace SCMS.Models
             // int userCount = Convert.ToInt32(cmd.ExecuteScalar());
             // return userCount > 0;
         }
+        
+        public bool IsValidEmail(string email)
+        {
+            using var connection = new MySqlConnection(_connectionString);
+            connection.Open();
+
+            string query = "SELECT COUNT(*) FROM users WHERE email = @Email";
+
+            using var cmd = new MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@Email", email);
+
+            int userCount = Convert.ToInt32(cmd.ExecuteScalar());
+            return userCount > 0;
+        }
 
         public bool CreateAdminUser(string username, string nic, string email, string phone, string password)
         {
