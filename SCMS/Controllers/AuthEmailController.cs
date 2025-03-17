@@ -5,7 +5,6 @@ namespace SCMS.Controllers
 {
     public class AuthEmailController : Controller
     {
-
         public IActionResult Index()
         {
             return View();
@@ -14,21 +13,23 @@ namespace SCMS.Controllers
         [HttpPost]
         public IActionResult Authenticate(string email)
         {
+            if (string.IsNullOrEmpty(email))
+            {
+                ViewBag.Error = "Please enter your email.";
+                return View("Index");
+            }
 
-           // if (!string.IsNullOrEmpty(email))
-            //{
-                // Here, you can add logic to check the email in the database
-            //    return RedirectToAction("Index", "AuthPassword"); // Redirect to Dashboard
-             //            }
-
+            // Check if the email exists in the database
             bool isValidEmail = new DBModel().IsValidEmail(email);
 
             if (isValidEmail)
             {
-                return RedirectToAction("Index", "AuthPassword"); // Redirect to Dashboard
+                // Store email in TempData for the next request
+                TempData["Email"] = email;
+                return RedirectToAction("Index", "AuthPassword"); // Redirect to password entry page
             }
 
-            ViewBag.Error = "Please enter a valid email.";
+            ViewBag.Error = "Invalid email address!";
             return View("Index");
         }
     }

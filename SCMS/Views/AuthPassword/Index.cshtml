@@ -25,7 +25,7 @@
 
                     <h4 class="mt-2">Welcome Back</h4>
                     <p>Welcome Back, Please Enter Your Details</p>
-                    
+
                     <!-- Sign In / Sign Up Toggle -->
                     <div class="btn-group w-100 mb-3 signInSignUpSection" role="group">
                         <button type="button" class="btn btn-light SignIn">Sign In</button>
@@ -35,18 +35,20 @@
                     <!-- Login Form -->
                     <form method="post" asp-action="Authenticate">
                         <div class="form-group mb-3">
-                            <input type="email" class="form-control" name="email" required placeholder="Enter your email">
-                            <span class="text-danger">@ViewBag.Error</span> <!-- Error Message -->
-                        </div> 
+                            <input type="email" class="form-control" name="email" required
+                                   placeholder="Enter your email"
+                                   value="@TempData["Email"]" readonly>
+                        </div>
 
                         <div class="notification-box yellow-notification">
-                            <span class="highlight">Please enter the password which esmartcampus mailed to you.
-                            </span>
+                            <span class="highlight">Please enter the password which Smart Campus mailed to you.</span>
                         </div>
 
                         <div class="form-group mb-3">
                             <input type="password" class="form-control" name="password" required placeholder="Enter your password">
                         </div>
+
+                        <span class="text-danger">@ViewBag.Error</span>
 
                         <button type="submit" class="btn btn-primary w-100">Continue</button>
                     </form>
