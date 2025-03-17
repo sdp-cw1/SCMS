@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SCMS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SCMS.styles.css" asp-append-version="true" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
+</head>
+<body class="PageBodyContent">
+
+    <div class="HeaderNavBar container d-flex bg-light">
+        <div class="col-md-2 navigation-bar">
+            <header>
+                <!-- Sidebar -->
+                <nav id="sidebar" class="d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <div class="welcomeLogoText">
+                            <img src="~/images/logo.png" alt="Logo" class="logo"> <!-- Your Logo -->
+                            <h3 class="mt-3">Smart Learning Campus</h3>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/AdminDashboard">
+                                    <i class="bi bi-house-door"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/UserManagement">
+                                    <i class="bi bi-calendar"></i> User Management
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+        </div>
+
+        <div class="col-md-10 mainContentBody">
+            <div class="headerContent">
+                <div class="searchBoxHeader">
+                    <input type="search" class="form-control" id="search" name="search" placeholder="Search anything here">
+                    <button type="button" id="searchButton" class="btn btn-light searchButton">
+                        <img src="~/images/Search.png" alt="Background" class="img-fluid">
+                    </button>
+                </div>
+
+                <div class="detailsHeader">
+                    <div class="notificationHeader">
+                        <button type="button" id="notificationButton" class="btn btn-light notifficationButton">
+                            <img src="~/images/notifications.png" alt="Background" class="img-fluid">
+                        </button>
+                    </div>
+                    <div class="messageHeader">
+                        <button type="button" id="messageButton" class="btn btn-light messageButton">
+                            <img src="~/images/Message circle.png" alt="Background" class="img-fluid">
+                        </button>
+                    </div>
+                    <div class="userHeader">
+                        <button type="button" id="userButton" class="btn btn-light userButton">
+                            <img src="~/images/Profile_nav.png" alt="Background" class="img-fluid">
+                            <span class="userNameHeader">
+                                Nilan C Bandara
+                            </span>
+                            <span class="userRoleHeader">
+                                Student
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+
+    </div>
+
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - SCMS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

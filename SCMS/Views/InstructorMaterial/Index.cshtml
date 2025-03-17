@@ -1,0 +1,174 @@
+﻿@{
+    Layout = "~/Views/Shared/_instructorLayout.cshtml";
+    ViewData["Title"] = "Instructor Material";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material - SCMS</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/css/custom.css" rel="stylesheet">
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <!-- Main Content -->
+            <main class="col-md-12 ms-sm-auto px-4">
+                <div class="row mb-4">
+                    <div class="col-8">
+
+                        <img src="~/images/HomePageBanner.png">
+
+
+                        <!-- Course Materials -->
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <div class="d-flex justify-content-left">
+                                    <button class="btn btn-success m-lg-1">KU-Top Up - Sept 2025</button>
+                                    <button class="btn btn-outline-secondary m-lg-1">DIE - Jan 2024</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <!-- Mobile Application Development -->
+                            <div class="col-md-6">
+                                <div class="card shadow-sm p-3">
+                                    <h5>Mobile Application Development</h5>
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#mobileLecture">Lecture Material</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#mobileAssessment">Assessments</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content p-2">
+                                        <div id="mobileLecture" class="tab-pane fade show active">
+                                            <ul class="list-group">
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="bi bi-file-earmark"></i> Week 04 - Setup Kotlin</span>
+                                                    <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-download"></i></a>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="bi bi-file-earmark"></i> Week 03 - History of JavaScript</span>
+                                                    <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-download"></i></a>
+                                                </li>
+                                                <button class="btn btn-outline-secondary">Upload a material </button>
+                                            </ul>
+                                        </div>
+                                        <div id="mobileAssessment" class="tab-pane fade">
+                                            <p>No Assessments Available</p>
+                                            <button class="btn btn-outline-secondary">Upload a material </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Digital Entrepreneurship -->
+                            <div class="col-md-6">
+                                <div class="card shadow-sm p-3">
+                                    <h5>Digital Entrepreneurship</h5>
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#digitalLecture">Lecture Material</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#digitalAssessment">Assessments</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content p-2">
+                                        <div id="digitalLecture" class="tab-pane fade show active">
+                                            <ul class="list-group">
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="bi bi-file-earmark"></i> Week 02 - Starting Digital Business</span>
+                                                    <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-download"></i></a>
+                                                </li>
+                                                <button class="btn btn-outline-secondary">Upload a material </button>
+                                            </ul>
+                                        </div>
+                                        <div id="digitalAssessment" class="tab-pane fade">
+                                            <p>No Assessments Available</p>
+                                            <button class="btn btn-outline-secondary">Upload a material </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <!-- Date Widget -->
+                        <div class="widget-box text-center">
+                            <div class="date-box">
+                                <div class="date-item">09</div>
+                                <div class="date-item">FEB</div>
+                                <div class="date-item">25</div>
+                            </div>
+                        </div>
+
+
+                        <!-- Question of the Day -->
+                        <div class="widget-box mb-3">
+                            <h5><strong>Question of the day</strong></h5>
+                            <p>1. Lorem Ipsum is simply dummy text?</p>
+                            <div>
+                                <input type="checkbox"> Lorem Ipsum is simply<br>
+                                <input type="checkbox" checked> Dummy Text<br>
+                                <input type="checkbox"> Simply<br>
+                                <input type="checkbox"> Lorem
+                            </div>
+                            <button class="btn btn-success mt-2">Submit</button>
+                        </div>
+
+                        <!-- Calendar Widget -->
+                        <div class="widget-box">
+                            <h5><strong>Calendar Widget</strong></h5>
+                            <p>February</p>
+                            <div class="d-flex flex-wrap">
+                                <div class="calendar-day selected">01</div>
+                                <div class="calendar-day selected">02</div>
+                                <div class="calendar-day selected">03</div>
+                                <div class="calendar-day">04</div>
+                                <div class="calendar-day">05</div>
+                                <div class="calendar-day">06</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+            </main>
+        </div>
+    </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

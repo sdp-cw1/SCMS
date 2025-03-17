@@ -408,6 +408,195 @@ nav#sidebar a.nav-link:hover {
     color: #fff;
 }
 
+.headerContent span.userRoleHeader {
+    background-color: #FFC107;
+    width: 95Px !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+span.userNameHeader {
+    font-size: 18Px !important;
+    font-weight: 500;
+}
+
+.headerContent {
+    border-bottom: 1px solid #ccc;
+}
+
+.mainContentBody h2 {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+ul.list-group.DasboardScheduled .list-group-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+ul.list-group.DasboardScheduled .list-group-item .classDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+ul.list-group.DasboardScheduled .list-group-item .locationDetails {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    justify-content: space-between;
+}
+
+ul.list-group.DasboardScheduled .list-group-item span.className {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+ul.list-group.DasboardScheduled .list-group-item span.dateInfo.bg-info {
+display: inline-block;
+width: 100Px !important;
+text-align: center;
+font-size: 12px;
+padding: 1Px !important;
+border-radius: 7px;
+margin-top: 6px;
+background-color: #55baaa !important;
+}
+
+ul.list-group.DasboardScheduled .list-group-item span.locationInfo {
+    font-size: 12px;
+}
+
+ul.list-group.DasboardScheduled .list-group-item span.teacherInfo {
+    font-size: 12px;
+}
+
+.container {
+    max-width: unset !important;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.headerContent {
+    padding-top: 15Px !important;
+}
+
+.headerContent .searchBoxHeader {
+    align-items: center;
+}
+
+ul.list-group.DasboardScheduled .list-group-item span.dateInfo.bg-info {
+    color: #fff;
+}
+
+button.btn.btn-success {
+    background-color: #4fc3a1;
+    font-weight: bold;
+    outline: 0;
+    border: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.widget-box h5 {
+    font-size: 18px;
+}
+
+.widget-box p {
+    font-size: 14px;
+}
+
+.widget-box .form-check label {
+    font-size: 14px;
+}
+
+nav#sidebar a.nav-link.active {
+    background-color: #55baaa;
+    color: #fff !important;
+}
+
+nav#sidebar a.nav-link {
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 90%;
+    border: 1;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+nav#sidebar a.nav-link:hover {
+    background-color: #55baaa;
+    color: #fff !important;
+}
+
+li.nav-item {
+    height: auto !important;
+    display: inline-block;
+    width: 100%;
+}
+
+ul.nav.flex-column {
+    display: inline-block;
+}
+
+.widget-box h5:after {
+    display: inline-block;
+    width: 60px;
+}
+
+.list-group-item span {
+    width: 100%;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.widget-box .list-group-item p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.card-deck {
+    display: flex;
+    gap: 10px;
+}
+
+.card-deck .card .card-body p.card-text {
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.widget-box h5 {
+    text-align: center;
+}
+
+.widget-box h5::after {
+    height: 1px;
+    background-color: #ccc;
+    content: "";
+    width: 100%;
+}
+
+#sidebar .welcomeLogoText img.logo {
+    margin-left: 13%;
+    display: block;
+    width: 140px;
+    height: auto;
+}
+
+#sidebar .welcomeLogoText h3.mt-3 {
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+    width: 90%;
+    margin-top: 0px !important;
+    margin-bottom: 24px;
+}
 /* END Home Page styles */
 
 /* Calendar Page styles */
@@ -417,6 +606,97 @@ nav#sidebar a.nav-link:hover {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.col-8 .calendar-container th {
+    font-size: 14px;
+}
+
+.col-8 .calendar-container td {
+    font-size: 14px;
+}
+
+.col-8 .calendar-container h4 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.col-8 .calendar-container .scheduleTyes span {
+    font-size: 14px;
+    margin-right: 16px;
+    vertical-align: middle;
+    margin-right: 13px;
+}
+
+.col-8 .calendar-container span.moduleType::before {
+    display: inline-block;
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-color: #007BFF;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.col-8 .calendar-container span.eventsType::before {
+    display: inline-block;
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-color: #6C757D;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.col-8 .calendar-container span.workshopType::before {
+    display: inline-block;
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-color: #28A745;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+.input-group-append {
+    cursor: pointer;
+}
+
+.sheduleMeetingForm .container.mt-4.pl-0 {
+    padding-left: 0Px;
+    padding-right: 0Px;
+}
+
+.sheduleMeetingForm input#datepicker {
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    padding: .575rem 2.25rem .3575rem .75rem;
+}
+
+.sheduleMeetingForm .container.mt-4.pl-0 i.gj-icon {
+    margin: 5px 5px !important;
+}
+
+.sheduleMeetingForm h5 {
+    margin-top: 40Px;
+    text-align: center;
+}
+
+.sheduleMeetingForm h5::after {
+    content: "";
+    display: block;
+    width: 90%;
+    height: 1Px;
+    background-color: #ccc;
+    margin-top: 10Px;
+    margin-bottom: 10Px;
+}
+
+.sheduleMeetingForm button.btn.btn-primary {
+    margin-top: 15Px;
+    background-color: #55baaa;
+    outline: 0;
+    border: 0;
+    font-size: 16Px;
+    font-weight: 700;
 }
 
 /* END Calendar Page styles */

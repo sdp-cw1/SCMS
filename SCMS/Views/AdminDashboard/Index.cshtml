@@ -1,0 +1,185 @@
+﻿@{
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+    ViewData["Title"] = "Admin Dashboard";   
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Smart Learning Campus</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/custom.css" />
+</head>
+<body class="bg-light">
+    <div class="d-flex">
+
+        <!-- Header -->
+        <div class="row mb-4">
+            <div class="col-8">
+
+                <img src="~/images/HomePageBanner.png">
+                <button class="btn btn-success">Change welcome banner</button>
+
+
+                <!-- New Schedules Section -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <!-- Image Carousel -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="~/images/EventBannerHome.png" class="d-block w-100" alt="Music Event">
+                                            <button class="btn btn-success">Add an event banner</buttoppppn>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- Calendar Widget -->
+                    <div class="card">
+                        <div class="card-header">Calendar Widget</div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-outline-secondary">&lt;</button>
+                                <h5>February 2025</h5>
+                                <button class="btn btn-outline-secondary">Add Schedule</button>
+                            </div>
+                            <table class="table table-bordered mt-2">
+                                <thead>
+                                    <tr>
+                                        <th>Mon</th>
+                                        <th>Tue</th>
+                                        <th>Wed</th>
+                                        <th>Thu</th>
+                                        <th>Fri</th>
+                                        <th>Sat</th>
+                                        <th>Sun</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>11</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                            <div class="sheduleWorkshoPandEventForm">
+                                <h5> Schedule a Workshop/Event</h5>
+                                <form action="" method="post">
+                                    <div class="col-md-12">
+                                        <div class="container mt-4 pl-0">
+                                            <label for="EventName" class="form-label">Worshop/Event Name:</label>
+
+                                            <input type="text" class="form-control" id="eventName" placeholder="Enter Event/Workshop Name" />
+                                            
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="container mt-4 pl-0">
+                                            <label for="eventDatePicker" class="form-label">Select Date:</label>
+
+                                            <input type="text" class="form-control" id="eventdatepicker" placeholder="Select Date" />
+                                            <script>
+                                                $('#datepicker').datepicker({
+                                                    uiLibrary: 'bootstrap5'
+                                                });
+                                            </script>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12">
+
+                                        <label for="inputSheduleType" class="form-label">Shedule Type:</label>
+                                        <select id="inputSheduleType" class="form-select">
+                                            <option selected>Workshop</option>
+                                            <option>Event</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+
+                                        <label for="inputTargetBatch" class="form-label">Select Module:</label>
+                                        <select id="inputTargetBatch" class="form-select">
+                                            <option selected>Undergraduate (Computer Science), Higher Diploma level</option>
+                                            <option>Higher Diloma, Dilomat</option>
+                                            <option>Certification Students</option>
+                                            <option>Staff</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label for="eventStartTime" class="form-label">Start Time</label>
+                                                <input type="text" id="eventStartTime" class="form-control" placeholder="Select Start Time">
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="eventEndTime" class="form-label mt-2">End Time</label>
+                                                <input type="text" id="eventEndTime" class="form-control" placeholder="Select End Time">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label for="eventLocation" class="form-label">Select Location:</label>
+                                        <select id="eventLocation" class="form-select">
+                                            <option selected>Block E,Class A</option>
+                                            <option>Block A,Class B</option>
+                                            <option>Block C,Class C</option>
+                                            <option>Block D,Class D</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="inputNote" class="form-label">Note:</label>
+                                        <textarea class="form-control" id="inputNote" rows="3" style="resize: none;" placeholder="Write additional notes here.."></textarea>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Sign in</button>
+                                        <button type="cancel" class="btn btn-primary">Cancel</button>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
