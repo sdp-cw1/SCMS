@@ -224,3 +224,8 @@ CREATE TABLE IF NOT EXISTS participants (
     -- CONSTRAINT fk_participants_schedule FOREIGN KEY (schedule_id) REFERENCES schedules(id) ON DELETE CASCADE,
     -- CONSTRAINT fk_participants_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+-- Adding a new column to the users table
+
+ALTER TABLE users
+ADD COLUMN AutoGenPassword VARCHAR(20);
