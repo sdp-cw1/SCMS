@@ -245,5 +245,23 @@ namespace SCMS.Models
             return password;
         }
 
+        // Method to validate the temporary password
+        public bool ValidateTempPassword(string email, string password)
+        {
+            using var connection = new MySqlConnector.MySqlConnection(_connectionString);
+            connection.Open();
+
+            string query = "SELECT COUNT(*) FROM users WHERE email = @Email AND AutoGenPassword = @Password";
+
+            using var cmd = new MySqlConnector.MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@Email", email);
+            cmd.Parameters.AddWithValue("@Password", password);
+
+            int matchCount = Convert.ToInt32(cmd.ExecuteScalar());
+
+            return matchCount > 0; // Return true if email and temp password match
+        }
+
+
     }
 }
