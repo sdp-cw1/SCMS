@@ -886,6 +886,34 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
     margin-top: 12px;
 }
 
+/** END Admin Dashboard */
+
+/** Create Profile Page */
+
+.profile-container .ClassCreateProfiledatepicker input {
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    padding: .575rem 2.25rem .3575rem .75rem;
+    width: 100% !important;
+    max-width: unset !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    height: 50px !important;
+}
+
+.profile-container .profile-box .ClassCreateProfiledatepicker div {
+    width: 88% !important;
+    height: 50px !important;
+}
+
+
+.profile-container .ClassCreateProfiledatepicker i {
+    top: 11px !important;
+    left: 86%;
+    font-size: 30px !important;
+}
+
+/** END Create Profile Page */
+
 /* Mobile Responsive */
 
 
