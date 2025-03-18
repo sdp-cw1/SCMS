@@ -127,43 +127,35 @@ CREATE TABLE IF NOT EXISTS `student` (
 -- Store Procedure for Inserting a new User and Student
 
 
-DELIMITER $$
-
+DELIMITER //
 CREATE PROCEDURE InsertUserAndStu(
-    IN p_username VARCHAR(20),
-    IN p_nic VARCHAR(12),
-    IN p_email VARCHAR(50),
-    IN p_phone VARCHAR(12),
+    IN p_username VARCHAR(50),
+    IN p_nic VARCHAR(20),
+    IN p_email VARCHAR(100),
+    IN p_phone VARCHAR(15),
     IN p_password VARCHAR(255),
     IN p_dob DATE,
-    IN p_firstname VARCHAR(50),
-    IN p_lastname VARCHAR(50)
+    IN p_firstName VARCHAR(50),
+    IN p_lastName VARCHAR(50),
+    IN p_address VARCHAR(100),
+    IN p_notifiedMethod VARCHAR(20)
 )
 BEGIN
-    DECLARE new_user_id INT;
-    DECLARE next_id INT;
-    DECLARE new_student_id VARCHAR(6);
+    DECLARE newUserId INT;
 
     -- Insert into users table
-    INSERT INTO users (username, nic, email, phone, password)
+    INSERT INTO users (username, nic, email, phone, password) 
     VALUES (p_username, p_nic, p_email, p_phone, p_password);
+    
+    -- Get the last inserted user_id
+    SET newUserId = LAST_INSERT_ID();
 
-    -- Get the last inserted user ID
-    SET new_user_id = LAST_INSERT_ID();
-
-    -- Generate new student ID
-    SELECT COALESCE(MAX(CAST(SUBSTRING(id, 3) AS UNSIGNED)), 0) + 1 
-    INTO next_id 
-    FROM student;
-
-    SET new_student_id = CONCAT('ST', LPAD(next_id, 4, '0'));
-
-    -- Insert into student table with proper ID and details
-    INSERT INTO student (id, user_id, dob, first_name, last_name)
-    VALUES (new_student_id, new_user_id, p_dob, p_firstname, p_lastname);
-END$$
-
+    -- Insert into student table
+    INSERT INTO student (id, user_id, dob, first_name, last_name, address, notified_method)
+    VALUES (CONCAT('STU', LPAD(newUserId, 3, '0')), newUserId, p_dob, p_firstName, p_lastName, p_address, p_notifiedMethod);
+END //
 DELIMITER ;
+
 
 
 -- Creating last all tables
@@ -235,3 +227,13 @@ ADD COLUMN AutoGenPassword VARCHAR(20);
 ALTER TABLE student
 ADD COLUMN address VARCHAR(100) NOT NULL, 
 ADD COLUMN notified_method VARCHAR(20) NOT NULL;
+
+-- Adding a new table to registered student deatils store
+
+CREATE TABLE RegisteredStudents (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(20) NULL,
+    AutoGenPassword VARCHAR(10) NULL
+);
