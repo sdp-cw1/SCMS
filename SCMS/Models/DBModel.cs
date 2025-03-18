@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using MySqlConnector;
+using Org.BouncyCastle.Utilities.Net;
 using System;
 using System.Net;
 using System.Net.Mail;
@@ -81,14 +82,14 @@ namespace SCMS.Models
         }
 
         // Method to create Account Staff User with hashed password
-        public bool CreateAccStaffUser(string username, string nic, string email, string phone, string password, DateOnly dob, string firstName, string lastName)
+        public bool CreateAccStaffUser(string username, string nic, string email, string phone, string password, DateOnly dob, string firstName, string lastName, string address,string notified_method)
         {
             using var connection = new MySqlConnector.MySqlConnection(_connectionString);
             connection.Open();
 
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
-            string query = "CALL InsertUserAndAcc(@Username, @Nic, @Email, @Phone, @Password, @Dob, @FirstName, @LastName)";
+            string query = "CALL InsertUserAndAcc(@Username, @Nic, @Email, @Phone, @Password, @Dob, @FirstName, @LastName , @address, @notified_method)";
 
             using var cmd = new MySqlConnector.MySqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@Username", username);
@@ -99,6 +100,8 @@ namespace SCMS.Models
             cmd.Parameters.AddWithValue("@Dob", dob);
             cmd.Parameters.AddWithValue("@FirstName", firstName);
             cmd.Parameters.AddWithValue("@LastName", lastName);
+            cmd.Parameters.AddWithValue("@address", address);
+            cmd.Parameters.AddWithValue("@notified_method", notified_method);
             try
             {
                 cmd.ExecuteReader();
