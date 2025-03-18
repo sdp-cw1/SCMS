@@ -1,4 +1,4 @@
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using MySqlConnector;
 using System;
 using System.Net;
@@ -179,40 +179,47 @@ namespace SCMS.Models
 
 
         // Method to send email with the generated password
-        private void SendPasswordEmail(string emailAddress, string generatedPassword)
+        private bool SendPasswordEmail(string emailAddress, string generatedPassword)
         {
             try
             {
-                // Retrieve the email and SMTP password from app settings (ensure it's correct)
-                string smtpEmail = System.Configuration.ConfigurationManager.AppSettings["SMTPEmail"];
-                string smtpAppPassword = System.Configuration.ConfigurationManager.AppSettings["SMTPAppPassword"];
+                Console.WriteLine($"📧 Sending email to: {emailAddress} with password: {generatedPassword}");
 
-                // Create the mail message
+                string smtpEmail = "ganidujayasanka@gmail.com";
+                string smtpAppPassword = "hsccoxszqfuaxxbr";
+
+                if (string.IsNullOrEmpty(emailAddress))
+                {
+                    Console.WriteLine("❌ Recipient email is missing.");
+                    return false;
+                }
+
                 MailMessage mail = new MailMessage
                 {
                     From = new MailAddress(smtpEmail),
                     Subject = "Your Generated Password",
-                    Body = $"Dear User, \n\nHere is your generated password: {generatedPassword}\n\nPlease use this password to log in.\n\nBest regards,\nColombo Lotus Tower Management Company (Private) Ltd"
+                    Body = $"Dear User,\n\nHere is your temporary password: {generatedPassword}\n\nUse this password to log in.\n\nBest Regards,\nSCMS Team"
                 };
-                mail.To.Add(emailAddress);  // Recipient's email address
+                mail.To.Add(emailAddress);
 
-                // SMTP client configuration for Gmail
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com")
                 {
-                    Port = 587,  // Gmail's SMTP server port
+                    Port = 587,
                     Credentials = new NetworkCredential(smtpEmail, smtpAppPassword),
-                    EnableSsl = true  // Enable SSL
+                    EnableSsl = true
                 };
 
-                // Send the email
                 smtpClient.Send(mail);
+                Console.WriteLine($"✅ Email sent successfully to {emailAddress}");
+                return true;
             }
             catch (Exception ex)
             {
-                // Handle any errors that occur during the email sending process
-                Console.WriteLine("Error sending email: " + ex.Message);
+                Console.WriteLine($"❌ Error sending email: {ex.Message}");
+                return false;
             }
         }
+
 
 
         // Method to generate a random password
