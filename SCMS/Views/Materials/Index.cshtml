@@ -138,19 +138,24 @@
                             </div>
 
                             <!-- Calendar Widget -->
-                            <div class="widget-box">
-                                <h5><strong>Calendar Widget</strong></h5>
-                                <p>February</p>
-                                <div class="d-flex flex-wrap">
-                                    <div class="calendar-day selected">01</div>
-                                    <div class="calendar-day selected">02</div>
-                                    <div class="calendar-day selected">03</div>
-                                    <div class="calendar-day">04</div>
-                                    <div class="calendar-day">05</div>
-                                    <div class="calendar-day">06</div>
-                                </div>
+                        <!-- Calendar Widget -->
+                        <div class="widget-box">
+                            <h5 class="fw-bold text-center mb-3">Calendar Widget</h5>
+                            <div class="text-center mb-2">
+                                <strong>February</strong>
+                            </div>
+                            <div class="calendar-grid">
+                                @for (int day = 1; day <= 31; day++)
+                                {
+                                    var activeDays = new List<int> { 1, 2, 3, 4, 5, 6 };
+                                    var isActive = activeDays.Contains(day) ? "active" : "";
+                                    <div class="calendar-day @isActive">
+                                        @day.ToString("00")
+                                    </div>
+                                }
                             </div>
                         </div>
+                    </div>
 
                         
 
