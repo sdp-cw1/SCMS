@@ -41,15 +41,16 @@
                                     </a>
                                 </li>
                             <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "ChatRoom" ? "active" : "")" href="/ChatRoom">
+                                    <i class="bi bi-chat-dots"></i> Chat Room
+                                </a>
+                                
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Materials" ? "active" : "")" href="/Materials">
                                     <i class="bi bi-book"></i> Materials
                                 </a>
                             </li>
-                                <li class="nav-item">
-                                <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "ChatRoom" ? "active" : "")" href="/ChatRoom">
-                                        <i class="bi bi-chat-dots"></i> Chat Room
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </nav>
@@ -76,13 +77,14 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Materials" ? "active" : "")" href="/Materials">
-                                        <i class="bi bi-book"></i>Materials
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "ChatRoom" ? "active" : "")" href="/ChatRoom">
                                         <i class="bi bi-chat-dots"></i>Chat Room
+                                    </a>
+                                    
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Materials" ? "active" : "")" href="/Materials">
+                                        <i class="bi bi-book"></i>Materials
                                     </a>
                                 </li>
                             </ul>
