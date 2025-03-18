@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Org.BouncyCastle.Ocsp;
 using SCMS.Models;
 
 public class AuthPasswordController : Controller
 {
     public IActionResult Index()
     {
-        // Retrieve the stored email and make it persist for another request
         if (TempData.ContainsKey("Email"))
         {
             ViewBag.Email = TempData["Email"];
@@ -16,7 +14,7 @@ public class AuthPasswordController : Controller
     }
 
     [HttpPost]
-    public IActionResult Authenticate(string email)
+    public IActionResult AuthenticateEmail(string email)
     {
         if (string.IsNullOrEmpty(email))
         {
@@ -24,58 +22,68 @@ public class AuthPasswordController : Controller
             return View("Index");
         }
 
-        TempData["Email"] = email; // Keep email for further use
+        TempData["Email"] = email;
 
-        // Generate a random password
         string generatedPassword = GenerateRandomPassword();
-
-        // Send the password to the email
         bool emailSent = new DBModel().SendPasswordEmail(email, generatedPassword);
 
         if (emailSent)
         {
-            // Keep TempData for redirect action
             TempData["Email"] = email;  // Ensure email is passed to the next action
-            return RedirectToAction("Confirmation"); // Redirect to confirmation page
+            return RedirectToAction("Index"); // Redirect to confirmation page
         }
 
         ViewBag.Error = "Failed to send the email. Please try again.";
         return View("Index");
     }
 
-    private string GenerateRandomPassword()
+    [HttpPost]
+    public IActionResult AuthenticatePassword(string email, string password)
     {
-        var random = new Random();
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        {
+            ViewBag.Error = "Email and Password are required!";
+            return View("Index");
+        }
 
-        // Define character sets
-        const string uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const string numbers = "0123456789";
-        const string symbols = "$#@";
-        const string lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+        bool isValid = new DBModel().ValidateTempPassword(email, password);
 
-        // Generate each required part of the password
-        string firstTwoLetters = new string(Enumerable.Range(0, 2).Select(_ => uppercaseLetters[random.Next(uppercaseLetters.Length)]).ToArray());
-        string fourNumbers = new string(Enumerable.Range(0, 4).Select(_ => numbers[random.Next(numbers.Length)]).ToArray());
-        char specialSymbol = symbols[random.Next(symbols.Length)];
-        char lastLetter = lowercaseLetters[random.Next(lowercaseLetters.Length)];
+        if (isValid)
+        {
+            TempData["Email"] = email; // Keep email for next step
+            return RedirectToAction("Index", "ConfirmPassword"); // Redirect to ConfirmPassword
+        }
 
-        // Concatenate to form the final password
-        string password = firstTwoLetters + fourNumbers + specialSymbol + lastLetter;
-
-        return password;
+        ViewBag.Error = "Invalid email or temporary password!";
+        return View("Index");
     }
 
 
     public IActionResult Confirmation()
     {
-        // Make sure Email is available in TempData or ViewBag
         if (TempData.ContainsKey("Email"))
         {
             ViewBag.Email = TempData["Email"];
             TempData.Keep("Email"); // Keep it for another request if needed
         }
 
-        // Confirmation page where you can show a success message
         return View();
+    }
+
+    private string GenerateRandomPassword()
+    {
+        var random = new Random();
+
+        const string uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const string numbers = "0123456789";
+        const string symbols = "$#@";
+        const string lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+
+        string firstTwoLetters = new string(Enumerable.Range(0, 2).Select(_ => uppercaseLetters[random.Next(uppercaseLetters.Length)]).ToArray());
+        string fourNumbers = new string(Enumerable.Range(0, 4).Select(_ => numbers[random.Next(numbers.Length)]).ToArray());
+        char specialSymbol = symbols[random.Next(symbols.Length)];
+        char lastLetter = lowercaseLetters[random.Next(lowercaseLetters.Length)];
+
+        return firstTwoLetters + fourNumbers + specialSymbol + lastLetter;
     }
 }

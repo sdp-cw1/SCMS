@@ -32,16 +32,16 @@
                         <button type="button" class="btn btn-light active SignUp">Sign Up</button>
                     </div>
 
-                  
-                    
+                    <!-- Password Generated Confirmation -->
+                    @if (ViewBag.PasswordSent != null && (bool)ViewBag.PasswordSent)
+                    {
                         <h4>Password Generated Successfully</h4>
- 
-                    
+                    }
 
                     <!-- Login Form (Only if password has not been sent yet) -->
-                    @if (ViewBag.PasswordSent == null)
+                    @if (ViewBag.PasswordSent == null || !(bool)ViewBag.PasswordSent)
                     {
-                        <form method="post" asp-action="Authenticate">
+                        <form method="post" asp-action="AuthenticatePassword">
                             <div class="form-group mb-3">
                                 <input type="email" class="form-control" name="email" required
                                        placeholder="Enter your email"
