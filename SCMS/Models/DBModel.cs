@@ -44,7 +44,7 @@ namespace SCMS.Models
             using var connection = new MySqlConnector.MySqlConnection(_connectionString);
             connection.Open();
 
-            string query = "SELECT COUNT(*) FROM users WHERE email = @Email";
+            string query = "SELECT COUNT(*) FROM RegisteredStudents WHERE email = @Email";
 
             using var cmd = new MySqlConnector.MySqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@Email", email);
@@ -147,7 +147,7 @@ namespace SCMS.Models
             connection.Open();
 
             // Use UPDATE query to update AutoGenPassword if the email exists in the table
-            string query = "UPDATE users SET AutoGenPassword = @AutoGenPassword WHERE email = @Email";
+            string query = "UPDATE RegisteredStudents SET AutoGenPassword = @AutoGenPassword WHERE email = @Email";
 
             using var cmd = new MySqlConnector.MySqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@Email", email);
@@ -251,7 +251,7 @@ namespace SCMS.Models
             using var connection = new MySqlConnector.MySqlConnection(_connectionString);
             connection.Open();
 
-            string query = "SELECT COUNT(*) FROM users WHERE email = @Email AND AutoGenPassword = @Password";
+            string query = "SELECT COUNT(*) FROM RegisteredStudents WHERE email = @Email AND AutoGenPassword = @Password";
 
             using var cmd = new MySqlConnector.MySqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@Email", email);

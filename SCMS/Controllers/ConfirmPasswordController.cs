@@ -66,7 +66,7 @@ namespace SCMS.Controllers
             using var connection = new MySqlConnection(_connectionString);
             connection.Open();
 
-            string query = "UPDATE users SET password = @Password WHERE email = @Email";
+            string query = "UPDATE RegisteredStudents SET password = @Password WHERE email = @Email";
 
             using var cmd = new MySqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@Email", email);
