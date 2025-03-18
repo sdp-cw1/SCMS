@@ -229,3 +229,9 @@ CREATE TABLE IF NOT EXISTS participants (
 
 ALTER TABLE users
 ADD COLUMN AutoGenPassword VARCHAR(20);
+
+
+-- Adding a new column to the student table
+ALTER TABLE student
+ADD COLUMN address VARCHAR(100) NOT NULL, 
+ADD COLUMN notified_method VARCHAR(20) NOT NULL;
