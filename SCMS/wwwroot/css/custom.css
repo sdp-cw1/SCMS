@@ -29,13 +29,13 @@
 }
 
 .welcomeLogoText {
-    display: inline-block !important;
+    /* display: inline-block !important; */
 }
 
-    .welcomeLogoText img.logo {
-        display: inline-block;
-        width: 160px;
-    }
+.welcomeLogoText img.logo {
+    display: inline-block;
+    /* width: 160px; */
+}
 
 .loginContainerClass .welcomeLogoText h3 {
     display: inline-block;
@@ -243,6 +243,19 @@
     background-color: #ccc;
 }
 
+.userHeader.adminUser span.userRoleHeader {
+    background-color: #0798FF;
+    margin-right: 0px;
+    padding: 5px 10px;
+    width: 120px !important;
+}
+
+.userHeader span.userRoleHeader {
+    margin-right: 0px;
+    padding: 5px 10px;
+    width: 120px !important;
+}
+
 /* Custom styles for the home page */
 body {
     font-family: Arial, sans-serif;
@@ -250,23 +263,23 @@ body {
 }
 
 #sidebar {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     bottom: 0;
-    width: 250px;
+    /* width: 250px; */
     background-color: #343a40;
     color: white;
     padding-top: 20px;
 }
 
-#sidebar .nav-link {
-    color: white;
-}
+    #sidebar .nav-link {
+        color: white;
+    }
 
-#sidebar .nav-link:hover {
-    background-color: #495057;
-}
+        #sidebar .nav-link:hover {
+            background-color: #495057;
+        }
 
 .carousel-inner img {
     height: 350px;
@@ -300,18 +313,18 @@ nav#sidebar {
     background-color: unset !important;
 }
 
-nav#sidebar a.nav-link.active {
-    color: #55BAAA !important;
-}
+    nav#sidebar a.nav-link.active {
+        color: #55BAAA !important;
+    }
 
-nav#sidebar a.nav-link {
-    color: #45425D !important;
-}
+    nav#sidebar a.nav-link {
+        color: #45425D !important;
+    }
 
-nav#sidebar a.nav-link:hover {
-    color: #55BAAA !important;
-    background: unset;
-}
+        nav#sidebar a.nav-link:hover {
+            color: #55BAAA !important;
+            background: unset;
+        }
 
 /** END sidebar styles */
 
@@ -351,6 +364,10 @@ nav#sidebar a.nav-link:hover {
 .headerContent span.userRoleHeader {
     width: 100% !important;
     display: block;
+}
+
+.headerContent span.userRoleHeader {
+    margin-right: 0px !important;
 }
 
 /* END Top Nav Bar styles */
@@ -403,10 +420,10 @@ nav#sidebar a.nav-link:hover {
     background-color: #e9f5f7;
 }
 
-.calendar-day.active {
-    background-color: #4fc3a1;
-    color: #fff;
-}
+    .calendar-day.active {
+        background-color: #4fc3a1;
+        color: #fff;
+    }
 
 .headerContent span.userRoleHeader {
     background-color: #FFC107;
@@ -438,42 +455,42 @@ ul.list-group.DasboardScheduled .list-group-item {
 
 
 
-ul.list-group.DasboardScheduled .list-group-item .classDetails {
-    display: flex;
-    flex-direction: column;
-}
+    ul.list-group.DasboardScheduled .list-group-item .classDetails {
+        display: flex;
+        flex-direction: column;
+    }
 
-ul.list-group.DasboardScheduled .list-group-item .locationDetails {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    justify-content: space-between;
-}
+    ul.list-group.DasboardScheduled .list-group-item .locationDetails {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        justify-content: space-between;
+    }
 
-ul.list-group.DasboardScheduled .list-group-item span.className {
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 700;
-}
+    ul.list-group.DasboardScheduled .list-group-item span.className {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 700;
+    }
 
-ul.list-group.DasboardScheduled .list-group-item span.dateInfo.bg-info {
-display: inline-block;
-width: 100Px !important;
-text-align: center;
-font-size: 12px;
-padding: 1Px !important;
-border-radius: 7px;
-margin-top: 6px;
-background-color: #55baaa !important;
-}
+    ul.list-group.DasboardScheduled .list-group-item span.dateInfo.bg-info {
+        display: inline-block;
+        width: 100Px !important;
+        text-align: center;
+        font-size: 12px;
+        padding: 1Px !important;
+        border-radius: 7px;
+        margin-top: 6px;
+        background-color: #55baaa !important;
+    }
 
-ul.list-group.DasboardScheduled .list-group-item span.locationInfo {
-    font-size: 12px;
-}
+    ul.list-group.DasboardScheduled .list-group-item span.locationInfo {
+        font-size: 12px;
+    }
 
-ul.list-group.DasboardScheduled .list-group-item span.teacherInfo {
-    font-size: 12px;
-}
+    ul.list-group.DasboardScheduled .list-group-item span.teacherInfo {
+        font-size: 12px;
+    }
 
 .container {
     max-width: unset !important;
@@ -485,9 +502,9 @@ ul.list-group.DasboardScheduled .list-group-item span.teacherInfo {
     padding-top: 15Px !important;
 }
 
-.headerContent .searchBoxHeader {
-    align-items: center;
-}
+    .headerContent .searchBoxHeader {
+        align-items: center;
+    }
 
 ul.list-group.DasboardScheduled .list-group-item span.dateInfo.bg-info {
     color: #fff;
@@ -501,6 +518,8 @@ button.btn.btn-success {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    outline: #4fc3a1;
+    border: #4fc3a1;
 }
 
 .widget-box h5 {
@@ -523,16 +542,16 @@ nav#sidebar a.nav-link.active {
 nav#sidebar a.nav-link {
     padding-left: 5%;
     padding-right: 5%;
-    width: 90%;
+    /* width: 90%; */
     border: 1;
     padding-top: 5%;
     padding-bottom: 5%;
 }
 
-nav#sidebar a.nav-link:hover {
-    background-color: #55baaa;
-    color: #fff !important;
-}
+    nav#sidebar a.nav-link:hover {
+        background-color: #55baaa;
+        color: #fff !important;
+    }
 
 li.nav-item {
     height: auto !important;
@@ -541,7 +560,7 @@ li.nav-item {
 }
 
 ul.nav.flex-column {
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .widget-box h5:after {
@@ -566,27 +585,28 @@ ul.nav.flex-column {
     gap: 10px;
 }
 
-.card-deck .card .card-body p.card-text {
-    font-size: 14px;
-    margin-top: 15px;
-}
+    .card-deck .card .card-body p.card-text {
+        font-size: 14px;
+        margin-top: 15px;
+    }
 
 .widget-box h5 {
     text-align: center;
 }
 
-.widget-box h5::after {
-    height: 1px;
-    background-color: #ccc;
-    content: "";
-    width: 100%;
-}
+    .widget-box h5::after {
+        height: 1px;
+        background-color: #ccc;
+        content: "";
+        width: 100%;
+    }
 
 #sidebar .welcomeLogoText img.logo {
-    margin-left: 13%;
-    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 140px;
     height: auto;
+    display: block;
 }
 
 #sidebar .welcomeLogoText h3.mt-3 {
@@ -657,6 +677,7 @@ ul.nav.flex-column {
     border-radius: 4px;
     margin-right: 5px;
 }
+
 .input-group-append {
     cursor: pointer;
 }
@@ -680,15 +701,15 @@ ul.nav.flex-column {
     text-align: center;
 }
 
-.sheduleMeetingForm h5::after {
-    content: "";
-    display: block;
-    width: 90%;
-    height: 1Px;
-    background-color: #ccc;
-    margin-top: 10Px;
-    margin-bottom: 10Px;
-}
+    .sheduleMeetingForm h5::after {
+        content: "";
+        display: block;
+        width: 90%;
+        height: 1Px;
+        background-color: #ccc;
+        margin-top: 10Px;
+        margin-bottom: 10Px;
+    }
 
 .sheduleMeetingForm button.btn.btn-primary {
     margin-top: 15Px;
@@ -701,9 +722,373 @@ ul.nav.flex-column {
 
 /* END Calendar Page styles */
 
+/** Material Page */
+
+.card h5 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card ul.nav.nav-tabs {
+    display: inline-block;
+}
+
+.card li.nav-item {
+    display: inline-block;
+    width: auto;
+}
+
+.card a.btn.btn-sm.btn-outline-primary {
+    border-color: #4fc3a1;
+}
+
+.card i.bi.bi-download {
+    color: #4fc3a1;
+    font-weight: bold;
+}
+
+.d-flex.justify-content-left button {
+    margin: 0px;
+    margin-right: 10px;
+}
+
+/** END Material Page*/
+
+/** Chat Room Page */
+
+.chat-container {
+    max-width: 400px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #66c2a5;
+}
+
+.chat-message {
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+
+.message-content {
+    background: #e9f7ef;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+.message-time {
+    font-size: 12px;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.message-sender {
+    font-weight: bold;
+}
+
+.chat-footer {
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #66c2a5;
+    padding-top: 10px;
+}
+
+.chat-footer input {
+    flex-grow: 1;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.send-btn {
+    background: #66c2a5;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.chat-container {
+    margin-left: 27px;
+    margin-right: 0px;
+}
+
+.chat-message.myMessage {
+    align-items: end !important;
+    justify-content: right;
+}
+
+/** END Chat Room Page */
+
+/** Admin Dashboard */
+
+.adminDashboardBody button.btn.btn-success {
+    margin-left: auto;
+    margin-right: 0px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.adminDashboardBody .card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.adminDashboardBody .card .card-header {
+    background: unset;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+    display: none;
+}
+
+.sheduleWorkshoPandEventForm button.btn.btn-primary {
+    outline: #4fc3a1;
+    border: #4fc3a1;
+    background-color: #4fc3a1;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.sheduleWorkshoPandEventForm h5 {
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    padding-bottom: 5px;
+    margin-top: 18px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.sheduleWorkshoPandEventForm .col-md-12,
+.sheduleWorkshoPandEventForm .col-12 {
+    margin-top: 12px;
+}
+
 /* Mobile Responsive */
+
+
+@media (max-width: 1100px) {
+
+    .calendar-day {
+        font-size: 10px;
+    }
+
+    .col-md-12.ms-sm-auto.px-4 .row.mb-4 .col-8 .row.mt-3 {
+        flex-direction: column;
+        width: 100% !important;
+    }
+
+    .col-md-12.ms-sm-auto.px-4 .row.mb-4 .col-8 .row.mt-3 .col-md-6 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .navigation-bar {
+        width: 200px;
+    }
+
+    .mainContentBody .col-8,
+    .mainContentBody .col-4 {
+        display: inline-block !important;
+        width: 94% !important;
+    }
+
+    .headerContent {
+        width: 88% !important;
+    }
+
+    .mainContentBody .headerContent img {
+        width: 20px !important;
+    }
+
+    button#userButton img {
+        width: 38px !important;
+    }
+
+    span.userNameHeader {
+        font-size: 16px !important;
+    }
+
+    .headerContent .searchBoxHeader {
+        align-items: flex-start;
+    }
+
+    #sidebar .welcomeLogoText img.logo {
+        width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #sidebar .welcomeLogoText h3.mt-3 {
+        width: 100% !important;
+        font-size: 20px;
+    }
+
+    nav#sidebar a.nav-link {
+        width: 100% !important;
+    }
+
+    .container-fluid .row .col-md-12 .row .col-md-8,
+    .container-fluid .row .col-md-12 .row .col-md-4 {
+        width: 92% !important;
+    }
+
+
+
+ 
+}
+
+
+
+
 @media (max-width: 768px) {
     .image-container {
         display: none;
     }
+
+    nav#sidebar {
+        display: none;
+    }
+
+    .HeaderNavBar.container.d-flex.bg-light {
+        flex-direction: column;
+    }
+
+    .headerContent {
+        width: 100% !important;
+        margin: 0px;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+
+    .mainContentBody .col-8, .mainContentBody .col-4 {
+        width: 100% !important;
+    }
+
+    .mainContentBody .col-8, .mainContentBody .col-4 {
+        margin-top: 10px;
+    }
+
+    .calendar-container {
+        margin-top: 10px;
+    }
+
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+        width: 100% !important;
+    }
+
+    .navigation-bar {
+        width: 100% !important;
+    }
+
+    .container-fluid .row .col-md-12 .row .col-md-8, .container-fluid .row .col-md-12 .row .col-md-4 {
+        width: 100% !important;
+    }
+
+    .chat-container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+        display: block !important;
+    }
+
+    .navbar-light .navbar-brand img.logo {
+        width: 70px;
+    }
+
+    a.navbar-brand {
+        display: inline-flex;
+        align-items: center;
+    }
+
+        a.navbar-brand h3 {
+            font-size: 14px;
+        }
+
+    .headerContent {
+        padding-top: 0px !important;
+    }
+
+    .mainContentBody .headerContent img {
+        width: 24px !important;
+    }
+
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light .navbar-nav a.nav-link {
+        color: #45425D !important;
+        padding: 2% !important;
+    }
+
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light .navbar-nav .nav-link i {
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light .navbar-nav .nav-link.active {
+        background-color: #55baaa;
+        color: #fff !important;
+    }
+
+    .col-md-12.ms-sm-auto.px-4 .row.mb-4 .col-8 .row.mt-3 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    button#userButton img {
+        margin-right: 10px;
+    }
+
+}
+
+@media (max-width: 600px){
+
+    .card-deck {
+        flex-direction: column;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+
+    button#userButton img {
+        float: left;
+    }
+
+    span.userNameHeader {
+        font-size: 15px !important;
+    }
+
+    .headerContent span.userRoleHeader {
+        font-size: 12px !important;
+        padding: 2px;
+    }
+
+    button#userButton {
+        padding-right: 0px !important;
+    }
+
 }

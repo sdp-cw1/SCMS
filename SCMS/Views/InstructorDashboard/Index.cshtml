@@ -263,6 +263,52 @@
                         </div>
                 </div>
             </div>
+            </div>
+            
+
+            <div class="col-md-4">
+                <!-- Date Widget -->
+                <div class="widget-box text-center">
+                    <div class="date-box">
+                        <div class="date-item">09</div>
+                        <div class="date-item">FEB</div>
+                        <div class="date-item">25</div>
+                    </div>
+                </div>
+
+
+                <!-- Question of the Day -->
+                <div class="widget-box mb-3">
+                    <h5><strong>Question of the day</strong></h5>
+                    <p>1. Lorem Ipsum is simply dummy text?</p>
+                    <div>
+                        <input type="checkbox"> Lorem Ipsum is simply<br>
+                        <input type="checkbox" checked> Dummy Text<br>
+                        <input type="checkbox"> Simply<br>
+                        <input type="checkbox"> Lorem
+                    </div>
+                    <button class="btn btn-success mt-2">Submit</button>
+                </div>
+
+
+                <!-- Calendar Widget -->
+                <div class="widget-box">
+                    <h5 class="fw-bold text-center mb-3">Calendar Widget</h5>
+                    <div class="text-center mb-2">
+                        <strong>February</strong>
+                    </div>
+                    <div class="calendar-grid">
+                        @for (int day = 1; day <= 31; day++)
+                        {
+                            var activeDays = new List<int> { 1, 2, 3, 4, 5, 6 };
+                            var isActive = activeDays.Contains(day) ? "active" : "";
+                            <div class="calendar-day @isActive">
+                                @day.ToString("00")
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

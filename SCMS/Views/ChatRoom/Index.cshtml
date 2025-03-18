@@ -31,12 +31,38 @@
                     <div class="col-md-8">
 
                         <img src="~/images/HomePageBanner.png">
-                        <div class="widget-box">
-                            <h5>KU - TOP UP Group</h5>
-                            <p><strong>Yesterday</strong></p>
-                            <p><strong>Hasitha</strong>: Lorem ipsum dolor sit amet...</p>
-                            <p><strong>Yasuri</strong>: Lorem ipsum dolor sit amet...</p>
-                            <p><strong>You</strong>: Lorem ipsum dolor sit amet...</p>
+
+                        <div class="chat-container">
+                            <div class="chat-header">KU - TOP UP Group</div>
+
+                            <div class="chat-message">
+                                <div class="message-content">
+                                    <div class="message-sender">Heshan Rathnayaka</div>
+                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                    <div class="message-time">7:31 p.m</div>
+                                </div>
+                            </div>
+
+                            <div class="chat-message">
+                                <div class="message-content">
+                                    <div class="message-sender">Yasuri Thathsarani</div>
+                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                    <div class="message-time">10:00 p.m</div>
+                                </div>
+                            </div>
+
+                            <div class="chat-message myMessage">
+                                <div class="message-content">
+                                    <div class="message-sender">You</div>
+                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                    <div class="message-time">11:50 p.m</div>
+                                </div>
+                            </div>
+
+                            <div class="chat-footer">
+                                <input type="text" placeholder="Type a message...">
+                                <button class="send-btn">+</button>
+                            </div>
                         </div>
                     </div>
 
@@ -66,16 +92,21 @@
                         </div>
 
                         <!-- Calendar Widget -->
+                        <!-- Calendar Widget -->
                         <div class="widget-box">
-                            <h5><strong>Calendar Widget</strong></h5>
-                            <p>February</p>
-                            <div class="d-flex flex-wrap">
-                                <div class="calendar-day selected">01</div>
-                                <div class="calendar-day selected">02</div>
-                                <div class="calendar-day selected">03</div>
-                                <div class="calendar-day">04</div>
-                                <div class="calendar-day">05</div>
-                                <div class="calendar-day">06</div>
+                            <h5 class="fw-bold text-center mb-3">Calendar Widget</h5>
+                            <div class="text-center mb-2">
+                                <strong>February</strong>
+                            </div>
+                            <div class="calendar-grid">
+                                @for (int day = 1; day <= 31; day++)
+                                {
+                                    var activeDays = new List<int> { 1, 2, 3, 4, 5, 6 };
+                                    var isActive = activeDays.Contains(day) ? "active" : "";
+                                    <div class="calendar-day @isActive">
+                                        @day.ToString("00")
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
