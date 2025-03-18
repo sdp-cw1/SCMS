@@ -4,6 +4,10 @@
     font-family: 'Arial', sans-serif;
 }
 
+a, p, div, h1, h2, h3, h4, h5, span, i, fa, li,, h, input, option, body {
+    color: #45425D !important
+}
+
 .login-container {
     height: 100vh;
     display: flex;
@@ -830,6 +834,41 @@ ul.nav.flex-column {
     justify-content: right;
 }
 
+.fileSharingChat .form-control {
+    display: inline-block;
+    width: 40px !important;
+    background: unset;
+    font-size: 12px;
+}
+
+.fileSharingChat {
+    display: inline-flex;
+    width: 100% !important;
+}
+
+.chat-footer {
+    width: 100% !important;
+    justify-content: space-between;
+}
+
+
+.fileSharingChat button.btn {
+    display: inline-block;
+    background-color: #4fc3a1;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.chat-footer form {
+    width: 100% !important;
+}
+
+.fileSharingChat .form-control::after {
+    display: block;
+    width: 20px;
+}
+
 /** END Chat Room Page */
 
 /** Admin Dashboard */
@@ -910,6 +949,30 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
     top: 11px !important;
     left: 86%;
     font-size: 30px !important;
+}
+
+.profile-container .ClassCreateProfiledatepicker i,
+.profile-container fa {
+    font-size: 20px !important;
+    top: 16px !important;
+    left: 90%;
+}
+
+.profile-container .profile-box .ClassCreateProfiledatepicker div {
+    display: inline-block;
+}
+
+.input-group.ClassCreateProfiledatepicker {
+    width: 100% !important;
+    display: inline-block;
+    text-align: left !important;
+}
+
+.input-group.ClassCreateProfiledatepicker span.input-group-text {
+    display: inline-block;
+    height: 50px !important;
+    vertical-align: top;
+    padding-top: 14px;
 }
 
 /** END Create Profile Page */
