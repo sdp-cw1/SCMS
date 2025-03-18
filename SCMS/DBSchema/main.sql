@@ -237,3 +237,11 @@ CREATE TABLE RegisteredStudents (
     password VARCHAR(20) NULL,
     AutoGenPassword VARCHAR(10) NULL
 );
+
+-- Inserting data to the RegisteredStudents table
+INSERT INTO RegisteredStudents (username, email, password, AutoGenPassword) 
+VALUES 
+    ('Ganidu.j', 'ganidujayasanka@gmail.com', NULL, NULL),
+    ('Nilan.c', 'nilanchathura8@gmail.com', NULL, NULL),
+    ('Danuddar.l', 'danu@gmail.com', NULL, NULL),
+    ('Ageepan.t', 'Agee@gmail.com', NULL, NULL);
