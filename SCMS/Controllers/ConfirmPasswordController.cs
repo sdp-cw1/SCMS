@@ -1,9 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MySqlConnector;
+using Microsoft.Extensions.Configuration;  // Ensure to add this namespace
+using SCMS.Models;
 
 namespace SCMS.Controllers
 {
     public class ConfirmPasswordController : Controller
     {
+        private readonly string _connectionString;
+
+        public ConfirmPasswordController(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("scmsCon");
+        }
+
         public IActionResult Index()
         {
             // Retrieve email from TempData to keep it for the next request
@@ -16,6 +26,7 @@ namespace SCMS.Controllers
             return View();
         }
 
+        [HttpPost]
         [HttpPost]
         public IActionResult ConfirmPassword(string email, string password, string confirmPassword)
         {
@@ -33,11 +44,44 @@ namespace SCMS.Controllers
                 return View("Index");
             }
 
-            // Here, you can add logic to store the user's password or proceed with further actions
-            // For example: update the password in the database
+            // Call the method to update the user's password in the database
+            bool isPasswordUpdated = UpdateUserPassword(email, password);
 
-            ViewBag.Success = "Password has been successfully confirmed!";
-            return RedirectToAction("Index", "CreateProfile"); // Redirect to profile creation page
+            if (isPasswordUpdated)
+            {
+                ViewBag.Success = "Password has been successfully updated!";
+                return RedirectToAction("Index", "CreateProfile"); // Redirect to CreateProfile page
+            }
+            else
+            {
+                ViewBag.Error = "There was an issue updating the password.";
+                return View("Index");
+            }
+        }
+
+
+        // Method to update the user's password securely
+        private bool UpdateUserPassword(string email, string newPassword)
+        {
+            using var connection = new MySqlConnection(_connectionString);
+            connection.Open();
+
+            string query = "UPDATE users SET password = @Password WHERE email = @Email";
+
+            using var cmd = new MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@Email", email);
+            cmd.Parameters.AddWithValue("@Password", newPassword);  // Use the plain password, no hashing
+
+            try
+            {
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected > 0; // Return true if the password was successfully updated
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error updating password: " + ex.Message);
+                return false;
+            }
         }
     }
 }
