@@ -40,8 +40,15 @@
                             <input type="password" class="form-control" name="confirmPassword" required placeholder="Confirm your password">
                         </div>
 
-                        <span class="text-danger">@ViewBag.Error</span> <!-- Error Message -->
-                        <span class="text-success">@ViewBag.Success</span> <!-- Success Message -->
+                        <!-- Display Error and Success Messages -->
+                        @if (ViewBag.Error != null)
+                        {
+                            <span class="text-danger">@ViewBag.Error</span> <!-- Error Message -->
+                        }
+                        @if (ViewBag.Success != null)
+                        {
+                            <span class="text-success">@ViewBag.Success</span> <!-- Success Message -->
+                        }
 
                         <button type="submit" class="btn btn-primary w-100">Confirm Password</button>
                     </form>
