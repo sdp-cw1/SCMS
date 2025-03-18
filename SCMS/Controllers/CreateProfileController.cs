@@ -6,6 +6,16 @@ namespace SCMS.Controllers
     {
         public IActionResult Index()
         {
+            if (TempData.ContainsKey("Username") && TempData.ContainsKey("Email"))
+            {
+                ViewBag.Username = TempData["Username"];
+                ViewBag.Email = TempData["Email"];
+            }
+            else
+            {
+                ViewBag.Error = "User data not found. Please try again.";
+            }
+
             return View();
         }
 
