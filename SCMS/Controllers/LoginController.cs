@@ -5,6 +5,8 @@ namespace SCMS.Controllers
 {
     public class LoginController : Controller
     {
+       
+
         public IActionResult Index()
         {
             return View();
@@ -13,20 +15,26 @@ namespace SCMS.Controllers
         [HttpPost]
         public IActionResult Authenticate(string email)
         {
-          //  if (!string.IsNullOrEmpty(email))
-            //{
-              //  return RedirectToAction("Index", "LoginAfterEmailValidate"); // Redirecting correctly
-           // }
+            if (string.IsNullOrEmpty(email))
+            {
+                ViewBag.Error = "Please enter your email.";
+                return View("Index");
+            }
 
-
+            // Check if the email exists in the database
             bool isValidEmail = new DBModel().IsValidEmail(email);
 
             if (isValidEmail)
             {
-                //return RedirectToAction("Index", "AuthPassword"); // Redirect to Dashboard
+                // You can add additional checks here if needed, like checking if the email is already verified
+                // Redirect to another page after email validation
+                TempData["Email"] = email;  // Store email temporarily for redirection
+                return RedirectToAction("Index", "LoginAfterEmailValidate"); // Redirect to the LoginAfterEmailValidate page
             }
-            ViewBag.Error = "Invalid login details";
+
+            ViewBag.Error = "Email is not registered.";
             return View("Index");
         }
+
     }
 }
