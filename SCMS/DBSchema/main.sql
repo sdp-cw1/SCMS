@@ -202,8 +202,9 @@ CREATE TABLE IF NOT EXISTS schedules (
     id VARCHAR(10) PRIMARY KEY,
     event_id VARCHAR(10) NOT NULL,
     datetime DATETIME NOT NULL,
-    location VARCHAR(255) NOT NULL,
-    FOREIGN KEY (`event_id`) REFERENCES `events`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+    location VARCHAR(10) NOT NULL,
+    FOREIGN KEY (`event_id`) REFERENCES `events`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (`location`) REFERENCES `classrooms`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
     -- CONSTRAINT fk_schedules_event FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE
 );
 
