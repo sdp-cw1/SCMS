@@ -127,35 +127,67 @@ CREATE TABLE IF NOT EXISTS `student` (
 -- Store Procedure for Inserting a new User and Student
 
 
-DELIMITER //
+DELIMITER $$
+
 CREATE PROCEDURE InsertUserAndStu(
-    IN p_username VARCHAR(50),
-    IN p_nic VARCHAR(20),
-    IN p_email VARCHAR(100),
-    IN p_phone VARCHAR(15),
-    IN p_password VARCHAR(255),
+    IN p_registeredEmail VARCHAR(50),  -- Email from RegisteredStudents (used for lookup)
+    IN p_nic VARCHAR(12),
+    IN p_phone VARCHAR(12),
     IN p_dob DATE,
-    IN p_firstName VARCHAR(50),
-    IN p_lastName VARCHAR(50),
+    IN p_firstname VARCHAR(50),
+    IN p_lastname VARCHAR(50),
     IN p_address VARCHAR(100),
     IN p_notifiedMethod VARCHAR(20)
 )
 BEGIN
-    DECLARE newUserId INT;
+    DECLARE new_user_id INT;
+    DECLARE next_id INT;
+    DECLARE new_student_id VARCHAR(6);
+    DECLARE userExists INT;
+    DECLARE reg_username VARCHAR(255);
+    DECLARE reg_email VARCHAR(50);
+    DECLARE reg_password VARCHAR(255);
 
-    -- Insert into users table
-    INSERT INTO users (username, nic, email, phone, password) 
-    VALUES (p_username, p_nic, p_email, p_phone, p_password);
-    
-    -- Get the last inserted user_id
-    SET newUserId = LAST_INSERT_ID();
+    -- Step 1: Get username, email, and password from RegisteredStudents
+    SELECT username, email, password INTO reg_username, reg_email, reg_password
+    FROM RegisteredStudents
+    WHERE email = p_registeredEmail
+    LIMIT 1;
 
-    -- Insert into student table
-    INSERT INTO student (id, user_id, dob, first_name, last_name, address, notified_method)
-    VALUES (CONCAT('STU', LPAD(newUserId, 3, '0')), newUserId, p_dob, p_firstName, p_lastName, p_address, p_notifiedMethod);
-END //
+    -- Step 2: If no matching email found, throw an error
+    IF reg_username IS NULL OR reg_email IS NULL OR reg_password IS NULL THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: Email not found in RegisteredStudents table.';
+    END IF;
+
+    -- Step 3: Check if username already exists in users table
+    SELECT COUNT(*) INTO userExists FROM users WHERE username = reg_username;
+
+    IF userExists > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: Username already exists in users table.';
+    ELSE
+        -- Step 4: Insert into users table using RegisteredStudents data
+        INSERT INTO users (username, nic, email, phone, password)
+        VALUES (reg_username, p_nic, reg_email, p_phone, reg_password);
+
+        -- Step 5: Get last inserted user ID
+        SET new_user_id = LAST_INSERT_ID();
+
+        -- Step 6: Generate new student ID
+        SELECT COALESCE(MAX(CAST(SUBSTRING(id, 3) AS UNSIGNED)), 0) + 1 
+        INTO next_id 
+        FROM student;
+
+        SET new_student_id = CONCAT('ST', LPAD(next_id, 4, '0'));
+
+        -- Step 7: Insert into student table with generated ID
+        INSERT INTO student (id, user_id, dob, first_name, last_name, address, notified_method)
+        VALUES (new_student_id, new_user_id, p_dob, p_firstname, p_lastname, p_address, p_notifiedMethod);
+    END IF;
+END$$
+
 DELIMITER ;
-
 
 
 -- Creating last all tables
