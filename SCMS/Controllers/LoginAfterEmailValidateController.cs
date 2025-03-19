@@ -1,58 +1,45 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using SCMS.Models;
 
 namespace SCMS.Controllers
 {
     public class LoginAfterEmailValidateController : Controller
     {
-        
-            public IActionResult Index()
+        public IActionResult Index()
+        {
+            var email = TempData["Email"] as string;
+            if (string.IsNullOrEmpty(email))
             {
-                var email = TempData["Email"] as string;
-                if (string.IsNullOrEmpty(email))
-                {
-                    return RedirectToAction("Index", "Login");
-                }
-
-                // You can fetch more user data based on the email here if needed
-                ViewBag.Email = email;
-                return View();  // Show a page for the next step in login
+                return RedirectToAction("Index", "Login");
             }
-        
 
+            ViewBag.Email = email;
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Authenticate(string email, string password)
         {
-
-
-
-      
-
-
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 ViewBag.Error = "Email and password are required!";
                 return View("Index");
             }
 
-           // if (users.TryGetValue(email, out string userDashboard))
-         //   {
-//return Redirect(userDashboard); // Redirects based on email
-         //   }
+            var dbModel = new DBModel();
 
-
-          //  bool isValidEmail = new DBModel().IsValidEmail(email);
-
-
-            bool IsValidUser = new DBModel().IsValidUser(email,password);
-
-            if (IsValidUser)
+            if (dbModel.IsValidateAdmin(email, password))
             {
-                return RedirectToAction("Index", "Home"); // Redirect to Dashboard
+                return RedirectToAction("Index", "AdminDashboard");
             }
-
+            else if (dbModel.IsValidateTeacher(email, password))
+            {
+                return RedirectToAction("Index", "InstructorDashboard");
+            }
+            else if (dbModel.IsValidateStudent(email, password))
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             ViewBag.Error = "Invalid email or password!";
             return View("Index");

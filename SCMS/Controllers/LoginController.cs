@@ -22,7 +22,7 @@ namespace SCMS.Controllers
             }
 
             // Check if the email exists in the database
-            bool isValidEmail = new DBModel().IsValidEmail(email);
+            bool isValidEmail = new DBModel().IsValidUserEmail(email);
 
             if (isValidEmail)
             {

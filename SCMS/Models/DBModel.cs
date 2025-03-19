@@ -54,6 +54,21 @@ namespace SCMS.Models
             return userCount > 0;
         }
 
+        // Method to check if the email is already registered
+        public bool IsValidUserEmail(string email)
+        {
+            using var connection = new MySqlConnector.MySqlConnection(_connectionString);
+            connection.Open();
+
+            string query = "SELECT COUNT(*) FROM users WHERE email = @Email";
+
+            using var cmd = new MySqlConnector.MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@Email", email);
+
+            int userCount = Convert.ToInt32(cmd.ExecuteScalar());
+            return userCount > 0;
+        }
+
         // Method to create Admin User with hashed password
         public bool CreateAdminUser(string username, string nic, string email, string phone, string password)
         {
@@ -267,5 +282,78 @@ namespace SCMS.Models
         }
 
 
+
+        // Method to validate if the user is a student
+        public bool IsValidateStudent(string email, string password)
+        {
+            using var connection = new MySqlConnector.MySqlConnection(_connectionString);
+            connection.Open();
+
+            // Query to check if the user exists in the users table and is also listed as a student
+            string query = @"
+        SELECT u.id 
+        FROM users u
+        INNER JOIN student s ON u.id = s.user_id
+        WHERE u.email = @Email AND u.password = @Password";
+
+            using var cmd = new MySqlConnector.MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@Email", email);
+            cmd.Parameters.AddWithValue("@Password", password);  // You should verify hashed password here
+
+            object result = cmd.ExecuteScalar();
+            return result != null;  // If result is not null, the user exists as a student
+        }
+
+
+        // Method to validate if the user is an account staff (teacher)
+        public bool IsValidateTeacher(string email, string password)
+        {
+            using var connection = new MySqlConnector.MySqlConnection(_connectionString);
+            connection.Open();
+
+            // Query to check if the user exists in the users table and is also listed as account staff
+            string query = @"
+        SELECT u.id 
+        FROM users u
+        INNER JOIN acc_staff a ON u.id = a.user_id
+        WHERE u.email = @Email AND u.password = @Password";
+
+            using var cmd = new MySqlConnector.MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@Email", email);
+            cmd.Parameters.AddWithValue("@Password", password);  // You should verify hashed password here
+
+            object result = cmd.ExecuteScalar();
+            return result != null;  // If result is not null, the user exists as an account staff
+        }
+
+
+
+
+        // Method to validate if the user is an admin
+        public bool IsValidateAdmin(string email, string password)
+        {
+            using var connection = new MySqlConnector.MySqlConnection(_connectionString);
+            connection.Open();
+
+            // Query to check if the user exists in the users table and is also listed as an admin
+            string query = @"
+        SELECT u.id 
+        FROM users u
+        INNER JOIN admin a ON u.id = a.user_id
+        WHERE u.email = @Email AND u.password = @Password";
+
+            using var cmd = new MySqlConnector.MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@Email", email);
+            cmd.Parameters.AddWithValue("@Password", password);  // You should verify hashed password here
+
+            object result = cmd.ExecuteScalar();
+            return result != null;  // If result is not null, the user exists as an admin
+        }
+
+
     }
 }
+
+
+
+
