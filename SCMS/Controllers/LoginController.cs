@@ -23,7 +23,7 @@ namespace SCMS.Controllers
 
             if (isValidEmail)
             {
-                return RedirectToAction("Index", "AuthPassword"); // Redirect to Dashboard
+                //return RedirectToAction("Index", "AuthPassword"); // Redirect to Dashboard
             }
             ViewBag.Error = "Invalid login details";
             return View("Index");

@@ -247,6 +247,23 @@ a, p, div, h1, h2, h3, h4, h5, span, i, fa, li,, h, input, option, body {
     background-color: #ccc;
 }
 
+.login-container {
+    width: 100% !important;
+    max-width: unset !important;
+    padding: 0px !important;
+}
+
+.login-container > .row {
+    width: 100% !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    border-radius: 0px !important;
+}
+
+.login-container .image-container img {
+    border-radius: 0px !important;
+}
+
 .userHeader.adminUser span.userRoleHeader {
     background-color: #0798FF;
     margin-right: 0px;
@@ -1179,6 +1196,75 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
 
     button#userButton img {
         margin-right: 10px;
+    }
+
+    .login-container {
+        background-image: url(https://localhost:7198/images/LoginCoverImage.png) !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .col-md-6.d-flex.align-items-center.justify-content-center.form-container.loginContainerClass {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px !important;
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+    }
+
+
+    .container-fluid.vh-100.d-flex.align-items-center.justify-content-center.signUpPageEmail {
+        background-image: url(https://localhost:7198/images/loginCoverImage.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .col-md-6.d-flex.flex-column.justify-content-center.text-center.p-5.loginContainerClass {
+        background-color: #fff;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px !important;
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+    }
+
+    .container-fluid.login-container.signUpPagePassword {
+        background-image: url(https://localhost:7198/images/LoginCoverImage.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .col-md-6.d-flex.align-items-center.justify-content-center.form-container {
+        margin-left: auto !important;
+        margin-right: auto;
+    }
+
+    .register-container {
+        justify-content: center;
+        background-image: url(https://localhost:7198/images/LoginCoverImage.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .col-md-6.d-flex.align-items-center.justify-content-center.form-container {
+        width: 90% !important;
+        margin: auto;
+        margin-top: 52%;
+        margin-bottom: 10%;
+    }
+
+    .container-fluid.profile-container {
+        justify-content: center;
+        background-image: url(https://localhost:7198/images/LoginCoverImage.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
     }
 
 }
