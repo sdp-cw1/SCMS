@@ -119,8 +119,6 @@ namespace SCMS.Models
             using var connection = new MySqlConnector.MySqlConnection(_connectionString);
             connection.Open();
 
-            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-
             string query = "CALL InsertUserAndStu(@Username, @Nic, @Email, @Phone, @Password, @Dob, @FirstName, @LastName)";
 
             using var cmd = new MySqlConnector.MySqlCommand(query, connection);
@@ -128,20 +126,23 @@ namespace SCMS.Models
             cmd.Parameters.AddWithValue("@Nic", nic);
             cmd.Parameters.AddWithValue("@Email", email);
             cmd.Parameters.AddWithValue("@Phone", phone);
-            cmd.Parameters.AddWithValue("@Password", hashedPassword);
+            cmd.Parameters.AddWithValue("@Password", password);  // Plain text password
             cmd.Parameters.AddWithValue("@Dob", dob);
             cmd.Parameters.AddWithValue("@FirstName", firstName);
             cmd.Parameters.AddWithValue("@LastName", lastName);
+
             try
             {
-                cmd.ExecuteReader();
+                cmd.ExecuteNonQuery();
                 return true;
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
+                Console.WriteLine("Error: " + ex.Message);
                 return false;
             }
         }
+
 
         // Method to save the generated password and send email
         public bool SaveGeneratedPasswordToDB(string email, string generatedPassword)

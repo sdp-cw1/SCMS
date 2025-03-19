@@ -22,10 +22,12 @@
         $(document).ready(function () {
             $('#createProfiledatepicker').datepicker({
                 uiLibrary: 'bootstrap5',
-                format: 'yyyy-mm-dd'
+                format: 'yyyy-mm-dd', // Ensure MySQL compatible format
+                autoclose: true
             });
         });
     </script>
+
     <link rel="stylesheet" href="~/css/custom.css">
 </head>
 <body>
@@ -93,10 +95,14 @@
                             <div class="col-md-6">
                                 <div class="input-group ClassCreateProfiledatepicker">
                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                    <input type="text" class="form-control" id="createProfiledatepicker" placeholder="Date of Birth" />
+                                    <input type="text" class="form-control" id="createProfiledatepicker" name="dob" placeholder="Date of Birth" />
                                     <script>
-                                        $('#createProfiledatepicker').datepicker({
-                                            uiLibrary: 'bootstrap5'
+                                        $(document).ready(function () {
+                                            $('#createProfiledatepicker').datepicker({
+                                                uiLibrary: 'bootstrap5',
+                                                format: 'yyyy-mm-dd', // Ensure MySQL compatible format
+                                                autoclose: true
+                                            });
                                         });
                                     </script>
                                 </div>
