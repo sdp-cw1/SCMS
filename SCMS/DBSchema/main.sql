@@ -230,6 +230,9 @@ CREATE PROCEDURE InsertSchedule(
     p_location VARCHAR(10)
 )
 BEGIN
+    DECLARE next_event_id VARCHAR(10);
+    DECLARE next_schedule_id VARCHAR(10);
+
     -- Generate new event ID
     SELECT COALESCE(MAX(CAST(SUBSTRING(id, 3) AS UNSIGNED)), 0) + 1 
     INTO next_event_id 
