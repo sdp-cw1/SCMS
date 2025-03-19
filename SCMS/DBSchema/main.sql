@@ -218,6 +218,39 @@ CREATE TABLE IF NOT EXISTS participants (
     -- CONSTRAINT fk_participants_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+
+-- Procedure to add new schedules
+DELIMITER $$
+CREATE PROCEDURE InsertSchedule(
+    p_event_name VARCHAR(100),
+    p_category VARCHAR(50),
+    p_organiser INTEGER,
+    p_starttime DATETIME,
+    p_endtime DATETIME,
+    p_location VARCHAR(10)
+)
+BEGIN
+    -- Generate new event ID
+    SELECT COALESCE(MAX(CAST(SUBSTRING(id, 3) AS UNSIGNED)), 0) + 1 
+    INTO next_event_id 
+    FROM events;
+
+    INSERT INTO events (
+        id, name, category, organiser
+    ) VALUES (next_event_id, p_event_name, p_category, p_organiser);
+
+    -- Generate new schedules ID
+    SELECT COALESCE(MAX(CAST(SUBSTRING(id, 3) AS UNSIGNED)), 0) + 1 
+    INTO next_schedule_id 
+    FROM schedules;
+
+    INSERT INTO schedules (
+        id, event_id, start_time, end_time, location
+    )
+    VALUES (next_schedule_id, next_event_id, p_starttime, p_endtime, p_location);
+END $$
+DELIMITER;
+
 -- Adding a new column to the users table
 
 ALTER TABLE users
