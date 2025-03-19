@@ -6,17 +6,21 @@ namespace SCMS.Controllers
 {
     public class LoginAfterEmailValidateController : Controller
     {
-        private static readonly Dictionary<string, string> users = new Dictionary<string, string>
-        {
-            { "admin@example.com", "/Admin/Dashboard" },
-            { "student@example.com", "/Student/Dashboard" },
-            { "teacher@example.com", "/Teacher/Dashboard" }
-        };
+        
+            public IActionResult Index()
+            {
+                var email = TempData["Email"] as string;
+                if (string.IsNullOrEmpty(email))
+                {
+                    return RedirectToAction("Index", "Login");
+                }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+                // You can fetch more user data based on the email here if needed
+                ViewBag.Email = email;
+                return View();  // Show a page for the next step in login
+            }
+        
+
 
         [HttpPost]
         public IActionResult Authenticate(string email, string password)
