@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS course_modules (
     -- CONSTRAINT fk_course_modules_module FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS classes (
+CREATE TABLE IF NOT EXISTS classrooms (
     id VARCHAR(10) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     seats INTEGER NOT NULL CHECK (seats > 0)
