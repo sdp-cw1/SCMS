@@ -193,7 +193,7 @@ CREATE TABLE IF NOT EXISTS events (
     id VARCHAR(10) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     category VARCHAR(50) NOT NULL,
-    organiser integer(10),
+    organiser INTEGER,
     FOREIGN KEY (`organiser`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
     -- CONSTRAINT fk_events_organiser FOREIGN KEY (organiser) REFERENCES users(id) ON DELETE SET NULL
 );
