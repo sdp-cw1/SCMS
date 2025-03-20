@@ -17,24 +17,30 @@ class DBInsertSchedule
 
     public bool CreateSchedule(DateTime StartDateTime, DateTime endDateTime, string Location, string eventName, string category, int organiser, string module)
     {
-        string query = "CALL InsertSchedule(@StartDateTime, @EndDateTime, @Location, @EventName, @Category, @Organiser, @Module)";
+        string query = "CALL InsertSchedule(@EventName, @Category, @Organiser, @StartDateTime, @EndDateTime, @Location)";
         using var cmd = new MySqlConnector.MySqlCommand(query, connection);
         cmd.Parameters.AddWithValue("@StartDateTime", StartDateTime);
         cmd.Parameters.AddWithValue("@EndDateTime", endDateTime);
-        cmd.Parameters.AddWithValue("@Location", Location);
+        cmd.Parameters.AddWithValue("@Location", "LO0001");
         cmd.Parameters.AddWithValue("@EventName", eventName);
         cmd.Parameters.AddWithValue("@Category", category);
         cmd.Parameters.AddWithValue("@Organiser", organiser);
-        cmd.Parameters.AddWithValue("@Module", module);
+        // cmd.Parameters.AddWithValue("@Module", module);
 
         try
         {
-            cmd.ExecuteScalar();
-            return true;
+            connection.Open();
+            var rowsAffected = cmd.ExecuteNonQuery();
+            return rowsAffected > 0;
         }
-        catch (System.Exception)
+        catch (System.Exception ex)
         {
+            Console.WriteLine(ex.Message);
             return false;
+        }
+        finally
+        {
+            connection.Close();
         }
     }
 
