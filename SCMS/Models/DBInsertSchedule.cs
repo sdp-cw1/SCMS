@@ -1,6 +1,6 @@
 using MySqlConnector;
 
-class DBInsertSchedule
+public class DBInsertSchedule
 {
         
     private readonly string _connectionString;       
