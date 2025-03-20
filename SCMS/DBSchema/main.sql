@@ -339,3 +339,10 @@ VALUES (
     "test class",
     5
 );
+
+INSERT INTO modules
+VALUES (
+    "MD0001",
+    "Software Development Practice",
+    1
+)

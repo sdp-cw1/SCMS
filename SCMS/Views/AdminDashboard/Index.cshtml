@@ -231,11 +231,10 @@ ViewData["Title"] = "Admin Dashboard";
 
                                         <label for="inputTargetBatch" class="form-label">Select Module:</label>
                                         <select id="inputTargetBatch" name="TargetBatch" class="form-select">
-                                            <option selected>Undergraduate (Computer Science), Higher Diploma level
-                                            </option>
-                                            <option>Higher Diloma, Dilomat</option>
-                                            <option>Certification Students</option>
-                                            <option>Staff</option>
+                                            @foreach (var module in ViewBag.Modules)
+                                            {
+                                            <option value="@module.moduleId">@module.moduleName</option>
+                                            }
                                         </select>
                                     </div>
                                     <div class="col-12">
@@ -257,18 +256,12 @@ ViewData["Title"] = "Admin Dashboard";
                                     <div class="col-md-12">
                                         <label for="EventLocation" class="form-label">Select Location:</label>
                                         <select id="EventLocation" name="EventLocation" class="form-select">
-                                            <option selected>Block E,Class A</option>
-                                            <option>Block A,Class B</option>
-                                            <option>Block C,Class C</option>
-                                            <option>Block D,Class D</option>
+                                            @foreach (var classroom in ViewBag.Classrooms)
+                                            {
+                                            <option value="@classroom.id">@classroom.name</option>
+                                            }
                                         </select>
                                     </div>
-                                    <!--div class="col-md-12">
-                                        <label for="inputNote" class="form-label">Note:</label>
-                                        <textarea class="form-control" id="inputNote" name="Note" rows="3"
-                                            style="resize: none;"
-                                            placeholder="Write additional notes here.."></textarea>
-                                    </div-->
 
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary">Shedule</button>
