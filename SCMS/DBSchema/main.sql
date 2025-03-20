@@ -284,8 +284,8 @@ BEGIN
         id, event_id, start_time, end_time, location
     )
     VALUES (next_schedule_id, next_event_id, p_starttime, p_endtime, p_location);
-END $$
-DELIMITER;
+END$$
+DELIMITER ;
 
 -- Adding a new column to the users table
 
