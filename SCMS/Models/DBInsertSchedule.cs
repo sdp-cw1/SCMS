@@ -45,57 +45,135 @@ class DBInsertSchedule
     }
 
 
-    public List<ScheduleModel> GetScheduleList(int userId, DateOnly StartDate, DateOnly EndDate)
+    public List<ScheduleModel> GetMyScheduleList(int userId, DateOnly StartDate, DateOnly EndDate)
     {
         string query = @"
             SELECT 
-            s.id,
-            e.id,
+            s.id AS schedule_id,
+            e.id AS event_id,
             e.name,
-            s.start_date,
-            s.end_date,
+            s.start_time,
+            s.end_time,
             s.location,
             e.category
-            FROM schedules s
-            INNER JOIN events e ON s.event_id = e.id
-            INNER JOIN participants p ON s.id = p.schedule_id
-            WHERE s.start_date >= @StartDate 
-            AND s.start_date <= @EndDate 
-            AND p.user_id = @UserId
-        ";
+                FROM schedules s
+                INNER JOIN events e ON s.event_id = e.id
+                INNER JOIN participants p ON s.id = p.schedule_id
+                WHERE s.start_time >= @StartDate 
+                AND s.start_time <= @EndDate 
+                AND p.user_id = @UserId
+                ";
         // conditions to check
         // schedule ids where user.id in participants table
         // must return schedule info: schedules.id, schedules.start_date, schedules.end_date, event_id -> events.id, events.category, 
 
+        connection.Open();
         using var cmd = new MySqlConnector.MySqlCommand(query, connection);
         cmd.Parameters.AddWithValue("@StartDate", StartDate);
         cmd.Parameters.AddWithValue("@EndDate", EndDate);
         cmd.Parameters.AddWithValue("@UserId", userId);
-        using var reader = cmd.ExecuteReader();
-
         var scheduleList = new List<ScheduleModel>();
-
-        int scheduleIdIndex = reader.GetOrdinal("id");
-        int eventIdIndex = reader.GetOrdinal("event_id");
-        int eventNameIndex = reader.GetOrdinal("name");
-        int startDateIndex = reader.GetOrdinal("start_date");
-        int endDateIndex = reader.GetOrdinal("end_date");
-        int locationIndex = reader.GetOrdinal("location");
-        int categoryIndex = reader.GetOrdinal("category");
-
-        while (reader.Read())
+        try
         {
-            scheduleList.Add(new ScheduleModel(
-                        reader.GetString(scheduleIdIndex),
-                        reader.GetString(eventNameIndex),
-                        reader.GetString(eventNameIndex),
-                        reader.GetDateTime(startDateIndex),
-                        reader.GetDateTime(endDateIndex),
-                        reader.GetString(locationIndex),
-                        reader.GetString(categoryIndex)
-                        ));
+            using var reader = cmd.ExecuteReader();
+
+
+            int scheduleIdIndex = reader.GetOrdinal("schedule_id");
+            int eventIdIndex = reader.GetOrdinal("event_id");
+            int eventNameIndex = reader.GetOrdinal("name");
+            int startDateIndex = reader.GetOrdinal("start_time");
+            int endDateIndex = reader.GetOrdinal("end_time");
+            int locationIndex = reader.GetOrdinal("location");
+            int categoryIndex = reader.GetOrdinal("category");
+
+            while (reader.Read())
+            {
+                scheduleList.Add(new ScheduleModel(
+                            reader.GetString(scheduleIdIndex),
+                            reader.GetString(eventNameIndex),
+                            reader.GetString(eventNameIndex),
+                            reader.GetDateTime(startDateIndex),
+                            reader.GetDateTime(endDateIndex),
+                            reader.GetString(locationIndex),
+                            reader.GetString(categoryIndex)
+                            ));
+            }
+            return scheduleList;
         }
-        return scheduleList;
+        catch (System.Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return scheduleList;
+        }
+        finally
+        {
+            connection.Close();
+        }
+    }
+
+
+    public List<ScheduleModel> GetScheduleList(int userId, DateOnly StartDate, DateOnly EndDate)
+    {
+        string query = @"
+            SELECT 
+            s.id AS schedule_id,
+            e.id AS event_id,
+            e.name,
+            s.start_time,
+            s.end_time,
+            s.location,
+            e.category
+                FROM schedules s
+                INNER JOIN events e ON s.event_id = e.id
+                WHERE s.start_time >= @StartDate 
+                AND s.start_time <= @EndDate 
+                ";
+        // conditions to check
+        // schedule ids where user.id in participants table
+        // must return schedule info: schedules.id, schedules.start_date, schedules.end_date, event_id -> events.id, events.category, 
+
+        connection.Open();
+        using var cmd = new MySqlConnector.MySqlCommand(query, connection);
+        cmd.Parameters.AddWithValue("@StartDate", StartDate);
+        cmd.Parameters.AddWithValue("@EndDate", EndDate);
+        cmd.Parameters.AddWithValue("@UserId", userId);
+        var scheduleList = new List<ScheduleModel>();
+        try
+        {
+            using var reader = cmd.ExecuteReader();
+
+
+            int scheduleIdIndex = reader.GetOrdinal("schedule_id");
+            int eventIdIndex = reader.GetOrdinal("event_id");
+            int eventNameIndex = reader.GetOrdinal("name");
+            int startDateIndex = reader.GetOrdinal("start_time");
+            int endDateIndex = reader.GetOrdinal("end_time");
+            int locationIndex = reader.GetOrdinal("location");
+            int categoryIndex = reader.GetOrdinal("category");
+
+            while (reader.Read())
+            {
+                scheduleList.Add(new ScheduleModel(
+                            reader.GetString(scheduleIdIndex),
+                            reader.GetString(eventNameIndex),
+                            reader.GetString(eventNameIndex),
+                            reader.GetDateTime(startDateIndex),
+                            reader.GetDateTime(endDateIndex),
+                            reader.GetString(locationIndex),
+                            reader.GetString(categoryIndex)
+                            ));
+            }
+            return scheduleList;
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return scheduleList;
+        }
+        finally
+        {
+            connection.Close();
+        }
     }
 
     public bool JoinEvent(string eventId, int userId)
