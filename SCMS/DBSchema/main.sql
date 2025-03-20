@@ -255,35 +255,42 @@ CREATE TABLE IF NOT EXISTS participants (
 -- Procedure to add new schedules
 DELIMITER $$
 CREATE PROCEDURE InsertSchedule(
-    p_event_name VARCHAR(100),
-    p_category VARCHAR(50),
-    p_organiser INTEGER,
-    p_starttime DATETIME,
-    p_endtime DATETIME,
-    p_location VARCHAR(10)
+    IN p_event_name VARCHAR(100),
+    IN p_category VARCHAR(50),
+    IN p_organiser INTEGER,
+    IN p_starttime DATETIME,
+    IN p_endtime DATETIME,
+    IN p_location VARCHAR(10)
 )
 BEGIN
-    DECLARE next_event_id VARCHAR(10);
-    DECLARE next_schedule_id VARCHAR(10);
+    DECLARE next_event_id INT;
+    DECLARE ev_id VARCHAR(10);
+    DECLARE next_schedule_id INT;
+    DECLARE schedule_id VARCHAR(10);
 
     -- Generate new event ID
     SELECT COALESCE(MAX(CAST(SUBSTRING(id, 3) AS UNSIGNED)), 0) + 1 
     INTO next_event_id 
     FROM events;
 
-    INSERT INTO events (
-        id, name, category, organiser
-    ) VALUES (next_event_id, p_event_name, p_category, p_organiser);
+    -- Construct the full event ID (e.g., EV0001)
+    SET ev_id = CONCAT('EV', LPAD(next_event_id, 4, '0'));
 
-    -- Generate new schedules ID
+    -- Insert into events table
+    INSERT INTO events (id, name, category, organiser)
+    VALUES (ev_id, p_event_name, p_category, p_organiser);
+
+    -- Generate new schedule ID
     SELECT COALESCE(MAX(CAST(SUBSTRING(id, 3) AS UNSIGNED)), 0) + 1 
     INTO next_schedule_id 
     FROM schedules;
 
-    INSERT INTO schedules (
-        id, event_id, start_time, end_time, location
-    )
-    VALUES (next_schedule_id, next_event_id, p_starttime, p_endtime, p_location);
+    -- Construct the full schedule ID (e.g., SH0001)
+    SET schedule_id = CONCAT('SH', LPAD(next_schedule_id, 4, '0'));
+
+    -- Insert into schedules table
+    INSERT INTO schedules (id, event_id, start_time, end_time, location)
+    VALUES (schedule_id, ev_id, p_starttime, p_endtime, p_location);
 END$$
 DELIMITER ;
 
@@ -315,3 +322,20 @@ VALUES
     ('Nilan.c', 'nilanchathura8@gmail.com', NULL, NULL),
     ('Danuddar.l', 'danu@gmail.com', NULL, NULL),
     ('Ageepan.t', 'Agee@gmail.com', NULL, NULL);
+
+-- Add test user
+INSERT INTO users (username, nic, email, phone, password) 
+VALUES (
+    'testuser',          -- username (varchar20, unique)
+    '123456789V',        -- nic (varchar12, unique)
+    'testuser@example.com', -- email (varchar50, unique)
+    '1234567890',        -- phone (varchar12, unique)
+    'testpassword'       -- password (varchar255)
+);
+
+INSERT INTO classrooms
+VALUES (
+    "LO0001",
+    "test class",
+    5
+);
