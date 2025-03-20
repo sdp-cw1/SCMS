@@ -21,7 +21,7 @@ class DBInsertSchedule
         using var cmd = new MySqlConnector.MySqlCommand(query, connection);
         cmd.Parameters.AddWithValue("@StartDateTime", StartDateTime);
         cmd.Parameters.AddWithValue("@EndDateTime", endDateTime);
-        cmd.Parameters.AddWithValue("@Location", "LO0001");
+        cmd.Parameters.AddWithValue("@Location", Location);
         cmd.Parameters.AddWithValue("@EventName", eventName);
         cmd.Parameters.AddWithValue("@Category", category);
         cmd.Parameters.AddWithValue("@Organiser", organiser);
