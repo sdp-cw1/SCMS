@@ -24,6 +24,38 @@ a, p, div, h1, h2, h3, h4, h5, span, i, fa, li,, h, input, option, body {
     max-width: 400px;
 }
 
+.container-fluid.register-container .col-md-6.d-none.d-md-block.image-container {
+    padding: 0px;
+}
+
+.container-fluid.register-container {
+    border-radius: 0px !important;
+}
+
+.container-fluid.register-container .image-container img {
+    border-radius: 0px;
+}
+
+.container-fluid.confirmPassword {
+    padding: 0px !important;
+}
+
+.container-fluid.confirmPassword > .row {
+    width: 100% !important;
+}
+
+.container-fluid.profile-container .col-md-6.d-none.d-md-block.image-container {
+    padding: 0px !important;
+}
+
+.container-fluid.profile-container .image-container img {
+    border-radius: 0px;
+}
+
+.container-fluid.confirmPassword .col-md-6.d-none.d-md-block.image-container {
+    float: right;
+}
+
 .login-container .image-container {
     padding: 0px !important;
 }
@@ -48,7 +80,15 @@ a, p, div, h1, h2, h3, h4, h5, span, i, fa, li,, h, input, option, body {
     font-weight: bold;
 }
 
+.notification-box.yellow-notification {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
 
+.signUpPageEmail {
+    background-color: #fff !important;
+}
 
 .loginContainerClass h4 {
     font-size: 22px;
@@ -276,6 +316,11 @@ a, p, div, h1, h2, h3, h4, h5, span, i, fa, li,, h, input, option, body {
     padding: 5px 10px;
     width: 120px !important;
 }
+
+.welcomeLogoText img.logo {
+    vertical-align: top;
+}
+
 
 /* Custom styles for the home page */
 body {
@@ -774,6 +819,59 @@ ul.nav.flex-column {
     margin-right: 10px;
 }
 
+.card .file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    background: #f1f1f1;
+}
+
+.card .upload-btn {
+    background: #198754;
+    color: #fff;
+    margin-top: 0px !important;
+}
+
+    .card .upload-btn:hover {
+        background: #145c32;
+    }
+
+.card .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.mt-3.uploadMaterialSection {
+    margin-top: 40px !important;
+    box-shadow: 0 .125rem .25rem rgba(var(--bs-body-color-rgb), .075) !important;
+    border: 1px solid #ccc;
+    padding: 3%;
+    border-radius: 8px;
+}
+
+.mt-3.uploadMaterialSection h5.fw-bold.text-center.mb-3::after {
+    display: block;
+    height: 1px;
+    background-color: #ccc;
+    content: "";
+    width: 100%;
+    margin-top: 8px;
+}
+
+.uploadMaterialSection label.form-label {
+    font-size: 12px;
+}
+
+.uploadMaterialSection .form-control {
+    padding: 8px;
+}
+
 /** END Material Page*/
 
 /** Chat Room Page */
@@ -890,6 +988,29 @@ ul.nav.flex-column {
 
 /** Admin Dashboard */
 
+.sheduleWorkshoPandEventForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+    border: 1px solid #4fc3a1;
+}
+
+.adminDashboardBody .card {
+    margin-left: 0px;
+}
+
+.adminDashboardBody .card {
+    margin-left: 0px !important;;
+}
+
+.sheduleWorkshoPandEventForm label.form-label.mt-2 {
+    margin-top: 0px !important;
+}
+
 .adminDashboardBody button.btn.btn-success {
     margin-left: auto;
     margin-right: 0px;
@@ -940,6 +1061,16 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
 .sheduleWorkshoPandEventForm .col-md-12,
 .sheduleWorkshoPandEventForm .col-12 {
     margin-top: 12px;
+}
+
+.sheduleWorkshoPandEventForm {
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color) !important;
+}
+
+.addNewUserRow button#continueButton {
+    background-color: #55baaa;
+    outline: #55baaa !important;
+    border-color: #55baaa;
 }
 
 /** END Admin Dashboard */
@@ -1016,6 +1147,52 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
     font-weight: bold;
 }
 
+.addNewUserRow button#continueButton {
+    background-color: #55baaa;
+    outline: #55baaa !important;
+    border-color: #55baaa;
+}
+
+.addNewUserRow .card h5 {
+    margin-top: 28px !important;
+}
+
+.addNewUserRow .card h5::after {
+    display: block;
+    height: 1px;
+    background-color: #ccc;
+    content: "";
+    width: 86%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.addNewUserRow button#continueButton {
+    background-color: #55baaa;
+    outline: #55baaa !important;
+    border-color: #55baaa;
+}
+
+.addNewUserRow .card h5 {
+    margin-top: 28px !important;
+}
+
+.addNewUserRow .card h5::after {
+    display: block;
+    height: 1px;
+    background-color: #ccc;
+    content: "";
+    width: 86%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.addNewUserRow button.btn.btn-primary {
+    background-color: #55baaa;
+    outline: #55baaa;
+    border-color: #55baaa;
+}
+
 /** END User Management Page */
 
 
@@ -1048,7 +1225,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
 
     .mainContentBody .col-8,
     .mainContentBody .col-4 {
-        display: inline-block !important;
+        display: inline-block;
         width: 94% !important;
     }
 
@@ -1267,6 +1444,11 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
         background-position: center;
     }
 
+    .profile-container .profile-box .ClassCreateProfiledatepicker div {
+        width: 85% !important;
+        height: 50px !important;
+    }
+
 }
 
 @media (max-width: 600px){
@@ -1293,5 +1475,16 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
     button#userButton {
         padding-right: 0px !important;
     }
+
+    .container-fluid.profile-container .col-md-6.d-flex.align-items-center.justify-content-center.form-container {
+        margin-top: 100%;
+    }
+
+    .profile-container .profile-box .ClassCreateProfiledatepicker div {
+        width: 85% !important;
+        height: 50px !important;
+    }
+
+
 
 }
