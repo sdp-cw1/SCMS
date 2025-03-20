@@ -18,8 +18,9 @@ namespace SCMS.Controllers
                 string TargetBatch,
                 string StartTime,
                 string EndTime,
-                string Location,
-                string Note)
+                string EventLocation
+                // string Note
+                )
         {
             DateOnly eventDt = DateOnly.Parse(EventDate);
             DateTime startDt = eventDt.ToDateTime(TimeOnly.Parse(StartTime));
@@ -27,13 +28,13 @@ namespace SCMS.Controllers
             new DBInsertSchedule().CreateSchedule(
                     StartDateTime: startDt,
                     endDateTime: endDt,
-                    Location: Location,
+                    Location: EventLocation,
                     eventName: EventName,
                     category: ScheduleType,
                     organiser: 1, // sample user_id
                     module: "MD0001" // sample module_id
                     );
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
