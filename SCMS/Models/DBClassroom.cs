@@ -2,14 +2,14 @@ using MySqlConnector;
 
 namespace SCMS.Models
 {
-    public class DBClassrooms
+    public class DBClassroom
     {
 
         private readonly string _connectionString;       
         private readonly MySqlConnection connection;
 
         // Constructor to inject IConfiguration
-        public DBClassrooms()
+        public DBClassroom()
         {
             // _connectionString = configuration.GetConnectionString("scmsCon");
             _connectionString  = "Server=127.0.0.1;User ID=root;Password=Gmysql#4321;Database=scms";
@@ -50,6 +50,7 @@ namespace SCMS.Models
 
             try
             {
+                connection.Open();
                 using var reader = cmd.ExecuteReader();
 
                 while(reader.Read())
