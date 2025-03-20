@@ -225,11 +225,10 @@ ViewData["Title"] = "Admin Dashboard";
 
                                         <label for="inputTargetBatch" class="form-label">Select Module:</label>
                                         <select id="inputTargetBatch" name="TargetBatch" class="form-select">
-                                            <option selected>Undergraduate (Computer Science), Higher Diploma level
-                                            </option>
-                                            <option>Higher Diloma, Dilomat</option>
-                                            <option>Certification Students</option>
-                                            <option>Staff</option>
+                                            @foreach (var module in ViewBag.Modules)
+                                            {
+                                            <option value="@module.moduleId">@module.moduleName</option>
+                                            }
                                         </select>
                                     </div>
                                     <div class="col-12">

@@ -20,6 +20,7 @@ namespace SCMS.Controllers
 
             ViewBag.Schedules = schedules;
             ViewBag.Classrooms = dbClassroom.GetClassRooms();
+            ViewBag.Modules = dbModule.GetModules();
             ViewBag.CurrentMonthStart = startDate;
             ViewBag.DaysInMonth = DateTime.DaysInMonth(startDate.Year, startDate.Month);
             ViewBag.FirstDayOfWeek = (int)new DateTime(startDate.Year, startDate.Month, 1).DayOfWeek;
