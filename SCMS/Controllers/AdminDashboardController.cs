@@ -14,9 +14,12 @@ namespace SCMS.Controllers
             DateOnly endDate = startDate.AddMonths(1).AddDays(-1);
 
             var db = new DBInsertSchedule();
+            var dbClassroom = new DBClassroom();
+            var dbModule = new DBModule();
             var schedules = db.GetScheduleList(userId, startDate, endDate);
 
             ViewBag.Schedules = schedules;
+            ViewBag.Classrooms = dbClassroom.GetClassRooms();
             ViewBag.CurrentMonthStart = startDate;
             ViewBag.DaysInMonth = DateTime.DaysInMonth(startDate.Year, startDate.Month);
             ViewBag.FirstDayOfWeek = (int)new DateTime(startDate.Year, startDate.Month, 1).DayOfWeek;
