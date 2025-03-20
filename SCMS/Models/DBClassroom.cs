@@ -27,12 +27,17 @@ namespace SCMS.Models
 
             try
             {
+                connection.Open();
                 cmd.ExecuteScalar();
                 return true;
             }
             catch (System.Exception)
             {
                 return false;
+            }
+            finally
+            {
+                connection.Close();
             }
         }
 
@@ -43,18 +48,29 @@ namespace SCMS.Models
             string query = "SELECT * FROM classrooms";
             using var cmd = new MySqlConnector.MySqlCommand(query, connection);
 
-            using var reader = cmd.ExecuteReader();
-
-            while(reader.Read())
+            try
             {
-                lst.Add(new ClassRoomModel(
-                            reader.GetString("id"),
-                            reader.GetString("name"),
-                            int.Parse(reader.GetInt64("seats").ToString(), System.Globalization.CultureInfo.CurrentCulture)
-                ));
-            }
+                using var reader = cmd.ExecuteReader();
 
-            return lst;
+                while(reader.Read())
+                {
+                    lst.Add(new ClassRoomModel(
+                                reader.GetString("id"),
+                                reader.GetString("name"),
+                                int.Parse(reader.GetInt64("seats").ToString(), System.Globalization.CultureInfo.CurrentCulture)
+                                ));
+                }
+
+                return lst;
+            }
+            catch
+            {
+                return lst;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }
