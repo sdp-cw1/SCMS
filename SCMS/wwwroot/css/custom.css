@@ -1199,7 +1199,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
     }
 
     .login-container {
-        background-image: url(https://localhost:7198/images/LoginCoverImage.png) !important;
+        background-image: url(https://localhost:7198/images/LoginCoverImage.webp) !important;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -1216,7 +1216,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
 
 
     .container-fluid.vh-100.d-flex.align-items-center.justify-content-center.signUpPageEmail {
-        background-image: url(https://localhost:7198/images/loginCoverImage.png);
+        background-image: url(https://localhost:7198/images/loginCoverImage.webp);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -1233,7 +1233,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
     }
 
     .container-fluid.login-container.signUpPagePassword {
-        background-image: url(https://localhost:7198/images/LoginCoverImage.png);
+        background-image: url(https://localhost:7198/images/LoginCoverImage.webp);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -1246,7 +1246,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
 
     .register-container {
         justify-content: center;
-        background-image: url(https://localhost:7198/images/LoginCoverImage.png);
+        background-image: url(https://localhost:7198/images/LoginCoverImage.webp);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -1261,7 +1261,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
 
     .container-fluid.profile-container {
         justify-content: center;
-        background-image: url(https://localhost:7198/images/LoginCoverImage.png);
+        background-image: url(https://localhost:7198/images/LoginCoverImage.webp);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
